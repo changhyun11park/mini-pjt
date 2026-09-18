@@ -1,0 +1,41 @@
+{
+  "case": {
+    "id": "11",
+    "category": "미등록_임직원",
+    "employee": "홍길동",
+    "region": "제주도",
+    "question": "홍길동님 제주도 여행 추천해줘"
+  },
+  "result": {
+    "answer": "'홍길동' 임직원을 찾을 수 없습니다.",
+    "contexts": [
+      {
+        "tool": "search_employee",
+        "result": {
+          "error": "'홍길동' 임직원을 찾을 수 없습니다."
+        }
+      }
+    ],
+    "trace": [
+      {
+        "seq": 1,
+        "type": "tool_call",
+        "name": "search_employee",
+        "args": {
+          "name_or_id": "홍길동"
+        }
+      },
+      {
+        "seq": 2,
+        "type": "tool_result",
+        "name": "search_employee",
+        "content": "{\"error\": \"'홍길동' 임직원을 찾을 수 없습니다.\"}"
+      },
+      {
+        "seq": 3,
+        "type": "answer",
+        "content": "'홍길동' 임직원을 찾을 수 없습니다."
+      }
+    ]
+  }
+}

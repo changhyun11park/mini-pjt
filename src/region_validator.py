@@ -2,12 +2,15 @@
 
 이 Agent는 국내 고속도로 통행료 API로 이동 비용을 계산하는 구조라, 대한민국 국민이
 갈 수 없는 지역이나 자동차로 주말에 다녀오기 힘든 해외 지역은 애초에 다루지 않는다.
+
+담당자는 지역명(시/도, 시/군/구, 읍/면/동 등 행정구역)만 입력한다 — 명소 이름을
+직접 입력하는 경우는 없으므로, 행정구역 주소 검색으로만 존재 여부를 판정한다.
 """
 import requests
 
 from kakao_client import kakao_headers
 
-_KEYWORD_URL = "https://dapi.kakao.com/v2/local/search/keyword.json"
+_ADDRESS_URL = "https://dapi.kakao.com/v2/local/search/address.json"
 
 # 자주 나올 법한 북한 지역명 (완전한 목록은 아니지만 실습 프로젝트 범위에서는 충분하다)
 _NORTH_KOREA_KEYWORDS = [
@@ -28,15 +31,15 @@ _OVERSEAS_KEYWORDS = [
 
 
 def _region_exists(region: str) -> bool:
-    """카카오 로컬 API로 실제 존재하는 국내 지역/장소인지 확인한다.
+    """카카오 행정구역 주소 검색으로 실제 존재하는 국내 지역인지 확인한다.
 
-    행정 주소 검색(local/search/address.json)만 쓰면 '경포대'·'해운대'처럼
-    정식 행정주소가 아닌 랜드마크·명소 이름이 전부 0건으로 나와 실존하는
-    지역까지 '존재하지 않음'으로 잘못 판정한다(실측 확인). 명소·지명을 함께
-    찾는 키워드(장소) 검색을 대신 쓴다.
+    담당자는 지역명(시/도 ~ 읍/면/동 등 행정구역)만 입력하므로 행정 주소 검색만
+    쓴다 — 키워드(장소) 검색은 "강원도 여주시"처럼 실존하지 않는 시/도+시/군 조합도
+    엉뚱한 가게 이름(예: 경기 여주시에 있는 "강원도자연애생산삼")에 걸려 "존재함"으로
+    잘못 판정하는 문제가 있어(실측 확인) 쓰지 않는다.
     """
     resp = requests.get(
-        _KEYWORD_URL,
+        _ADDRESS_URL,
         headers=kakao_headers(),
         params={"query": region, "size": 1},
         timeout=10,
