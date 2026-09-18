@@ -1,0 +1,267 @@
+[
+  {
+    "id": "SDS10482",
+    "name": "김하늘",
+    "team": "클라우드운영팀",
+    "email": "haneul.kim@samsungsds.example.com",
+    "phone": "010-2841-5920",
+    "family": []
+  },
+  {
+    "id": "SDS10483",
+    "name": "김하늘",
+    "team": "정보보안팀",
+    "email": "haneul2.kim@samsungsds.example.com",
+    "phone": "010-5584-2232",
+    "family": [
+      {
+        "name": "박민규",
+        "relation": "배우자",
+        "age": 42
+      }
+    ]
+  },
+  {
+    "id": "SDS23917",
+    "name": "박도윤",
+    "team": "물류플랫폼팀",
+    "email": "doyun.park@samsungsds.example.com",
+    "phone": "010-3392-6017",
+    "family": []
+  },
+  {
+    "id": "SDS30651",
+    "name": "이서준",
+    "team": "클라우드운영팀",
+    "email": "seojun.lee@samsungsds.example.com",
+    "phone": "010-4915-2283",
+    "family": []
+  },
+  {
+    "id": "SDS44208",
+    "name": "최민준",
+    "team": "물류플랫폼팀",
+    "email": "minjun.choi@samsungsds.example.com",
+    "phone": "010-5027-8134",
+    "family": [
+      {
+        "name": "한지민",
+        "relation": "배우자",
+        "age": 33
+      }
+    ]
+  },
+  {
+    "id": "SDS58734",
+    "name": "정하은",
+    "team": "클라우드운영팀",
+    "email": "haeun.jung@samsungsds.example.com",
+    "phone": "010-6183-4409",
+    "family": [
+      {
+        "name": "김도현",
+        "relation": "배우자",
+        "age": 35
+      }
+    ]
+  },
+  {
+    "id": "SDS61295",
+    "name": "강지우",
+    "team": "물류플랫폼팀",
+    "email": "jiwoo.kang@samsungsds.example.com",
+    "phone": "010-7256-9581",
+    "family": [
+      {
+        "name": "정민재",
+        "relation": "배우자",
+        "age": 34
+      },
+      {
+        "name": "강하은",
+        "relation": "딸",
+        "age": 6
+      }
+    ]
+  },
+  {
+    "id": "SDS72840",
+    "name": "윤서연",
+    "team": "클라우드운영팀",
+    "email": "seoyeon.yoon@samsungsds.example.com",
+    "phone": "010-8340-1726",
+    "family": [
+      {
+        "name": "박지원",
+        "relation": "배우자",
+        "age": 37
+      },
+      {
+        "name": "윤태민",
+        "relation": "아들",
+        "age": 10
+      },
+      {
+        "name": "윤소이",
+        "relation": "딸",
+        "age": 6
+      }
+    ]
+  },
+  {
+    "id": "SDS83417",
+    "name": "임재현",
+    "team": "물류플랫폼팀",
+    "email": "jaehyun.im@samsungsds.example.com",
+    "phone": "010-9471-2038",
+    "family": []
+  },
+  {
+    "id": "SDS94062",
+    "name": "한소율",
+    "team": "클라우드운영팀",
+    "email": "soyul.han@samsungsds.example.com",
+    "phone": "010-1052-6394",
+    "family": [
+      {
+        "name": "이준서",
+        "relation": "배우자",
+        "age": 31
+      }
+    ]
+  },
+  {
+    "id": "SDS10937",
+    "name": "오준영",
+    "team": "물류플랫폼팀",
+    "email": "junyoung.oh@samsungsds.example.com",
+    "phone": "010-2189-7450",
+    "family": [
+      {
+        "name": "박서현",
+        "relation": "배우자",
+        "age": 38
+      },
+      {
+        "name": "오하린",
+        "relation": "딸",
+        "age": 7
+      }
+    ]
+  },
+  {
+    "id": "SDS22684",
+    "name": "서지훈",
+    "team": "클라우드운영팀",
+    "email": "jihoon.seo@samsungsds.example.com",
+    "phone": "010-3364-8517",
+    "family": [
+      {
+        "name": "최유나",
+        "relation": "배우자",
+        "age": 36
+      },
+      {
+        "name": "서준",
+        "relation": "아들",
+        "age": 10
+      }
+    ]
+  },
+  {
+    "id": "SDS35510",
+    "name": "문채원",
+    "team": "물류플랫폼팀",
+    "email": "chaewon.moon@samsungsds.example.com",
+    "phone": "010-4478-9602",
+    "family": [
+      {
+        "name": "강민호",
+        "relation": "배우자",
+        "age": 40
+      },
+      {
+        "name": "문서윤",
+        "relation": "딸",
+        "age": 9
+      },
+      {
+        "name": "문서준",
+        "relation": "아들",
+        "age": 12
+      }
+    ]
+  },
+  {
+    "id": "SDS47823",
+    "name": "배성민",
+    "team": "클라우드운영팀",
+    "email": "seongmin.bae@samsungsds.example.com",
+    "phone": "010-5589-0713",
+    "family": [
+      {
+        "name": "윤아름",
+        "relation": "배우자",
+        "age": 39
+      },
+      {
+        "name": "배지호",
+        "relation": "아들",
+        "age": 8
+      },
+      {
+        "name": "배수아",
+        "relation": "딸",
+        "age": 11
+      }
+    ]
+  },
+  {
+    "id": "SDS59261",
+    "name": "노유진",
+    "team": "물류플랫폼팀",
+    "email": "yoojin.no@samsungsds.example.com",
+    "phone": "010-6690-1824",
+    "family": [
+      {
+        "name": "정우성",
+        "relation": "배우자",
+        "age": 52
+      },
+      {
+        "name": "노하준",
+        "relation": "아들",
+        "age": 23
+      },
+      {
+        "name": "노은서",
+        "relation": "딸",
+        "age": 20
+      }
+    ]
+  },
+  {
+    "id": "SDS68094",
+    "name": "신동현",
+    "team": "클라우드운영팀",
+    "email": "donghyun.shin@samsungsds.example.com",
+    "phone": "010-7701-2935",
+    "family": [
+      {
+        "name": "임수정",
+        "relation": "배우자",
+        "age": 50
+      },
+      {
+        "name": "신재훈",
+        "relation": "아들",
+        "age": 22
+      },
+      {
+        "name": "신다은",
+        "relation": "딸",
+        "age": 19
+      }
+    ]
+  }
+]

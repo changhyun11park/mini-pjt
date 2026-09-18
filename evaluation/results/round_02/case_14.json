@@ -1,0 +1,53 @@
+{
+  "case": {
+    "id": "14",
+    "category": "동명이인",
+    "employee": "김하늘",
+    "region": "강원도",
+    "question": "김하늘님 강원도 여행 추천해줘"
+  },
+  "result": {
+    "answer": "김하늘님이 동명이인으로 여러 분 계십니다. 아래에서 대상자를 확인해 주세요.\n\n- 김하늘 · 클라우드운영팀 (SDS10482)\n- 김하늘 · 정보보안팀 (SDS10483)",
+    "contexts": [
+      {
+        "tool": "search_employee",
+        "result": {
+          "ambiguous": true,
+          "candidates": [
+            {
+              "id": "SDS10482",
+              "name": "김하늘",
+              "team": "클라우드운영팀"
+            },
+            {
+              "id": "SDS10483",
+              "name": "김하늘",
+              "team": "정보보안팀"
+            }
+          ]
+        }
+      }
+    ],
+    "trace": [
+      {
+        "seq": 1,
+        "type": "tool_call",
+        "name": "search_employee",
+        "args": {
+          "name_or_id": "김하늘"
+        }
+      },
+      {
+        "seq": 2,
+        "type": "tool_result",
+        "name": "search_employee",
+        "content": "{\"ambiguous\": true, \"candidates\": [{\"id\": \"SDS10482\", \"name\": \"김하늘\", \"team\": \"클라우드운영팀\"}, {\"id\": \"SDS10483\", \"name\": \"김하늘\", \"team\": \"정보보안팀\"}]}"
+      },
+      {
+        "seq": 3,
+        "type": "answer",
+        "content": "김하늘님이 동명이인으로 여러 분 계십니다. 아래에서 대상자를 확인해 주세요.\n\n- 김하늘 · 클라우드운영팀 (SDS10482)\n- 김하늘 · 정보보안팀 (SDS10483)"
+      }
+    ]
+  }
+}

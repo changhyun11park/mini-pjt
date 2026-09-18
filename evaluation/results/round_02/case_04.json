@@ -1,0 +1,180 @@
+{
+  "case": {
+    "id": "4",
+    "category": "정상_목적지_성인자녀",
+    "employee": "노유진",
+    "region": "경주시 불국동",
+    "question": "노유진님 경주시 불국동 여행 추천해줘"
+  },
+  "result": {
+    "answer": "노유진님, 한 주간 고생 많으셨습니다! 😊 이번 주말에는 가족분들과 함께 경주의 아름다운 자연을 만끽하러 떠나보시는 건 어떨까요?\n\n### 🏞️ 이번 주 추천: [토함산](http://place.map.kakao.com/8107208)\n\n경주 [토함산](http://place.map.kakao.com/8107208)은 신라의 역사가 살아 숨 쉬는 명산입니다. 해발 745m의 완만한 능선을 따라 오르다 보면 울창한 숲과 맑은 공기가 일상의 피로를 씻어주고, 정상에서 바라보는 경주 시내와 동해 바다의 전망은 가족 모두에게 잊지 못할 추억을 선사할 것입니다. 특히 [토함산](http://place.map.kakao.com/8107208) 자락에 자리한 석굴암과 불국사는 세계문화유산으로, 등산과 함께 우리 문화유산의 아름다움을 느낄 수 있어 배우자님과 자녀분들 모두 의미 있는 시간을 보내실 수 있습니다. 가을 단풍이나 봄 신록의 계절이라면 더욱 환상적인 풍경을 만나실 수 있습니다.\n\n### 🍽️ 주변 맛집\n\n데이터 없음\n\n### 📋 참고 자료\n\n| 항목 | 내용 |\n|------|------|\n| 왕복 교통비 | 약 77,347원 |\n| 편도 소요시간 | 1시간 51분 |\n\n<div class=\"answer-footnote\">※ 위 교통비는 고속도로 통행료와 유류비를 포함한 추정치 입니다.<br>※ 명소 추천 근거는 평점이 아니라 최근 블로그 언급 빈도입니다.</div>",
+    "contexts": [
+      {
+        "tool": "search_employee",
+        "result": {
+          "id": "SDS59261",
+          "name": "노유진",
+          "team": "물류플랫폼팀",
+          "email": "yoojin.no@samsungsds.example.com",
+          "phone": "010-6690-1824",
+          "family": [
+            {
+              "name": "정우성",
+              "relation": "배우자",
+              "age": 52
+            },
+            {
+              "name": "노하준",
+              "relation": "아들",
+              "age": 23
+            },
+            {
+              "name": "노은서",
+              "relation": "딸",
+              "age": 20
+            }
+          ]
+        }
+      },
+      {
+        "tool": "recommend_place",
+        "result": {
+          "keyword_used": "가족여행",
+          "note": "평점이 아니라 최근 블로그 언급이 많은 곳 기준입니다.",
+          "추천_명소": {
+            "name": "토함산",
+            "address": "경북 경주시 마동 산 1-1",
+            "mention_count": 3030,
+            "url": "http://place.map.kakao.com/8107208",
+            "lat": 35.80177195761822,
+            "lng": 129.34523390026058
+          },
+          "그_외_가볼만한_곳": []
+        }
+      },
+      {
+        "tool": "price_time",
+        "result": {
+          "toll": 10700,
+          "distance_km": 186.49,
+          "duration_min": 111,
+          "duration_display": "1시간 51분",
+          "destination": "토함산",
+          "origin_station": "서울영업소",
+          "destination_station": "경주영업소",
+          "note": "통행료·거리는 고속도로 영업소 구간만 포함한 값이고, 편도 소요시간은 삼성SDS 본사에서 추천 명소까지 실제 도로 기준(카카오모빌리티 길찾기) 값입니다."
+        }
+      },
+      {
+        "tool": "nearby_restaurant",
+        "result": {
+          "error": "주변에서 맛집을 찾을 수 없습니다."
+        }
+      },
+      {
+        "tool": "traffic_calculator",
+        "result": {
+          "round_trip_cost": 77347
+        }
+      }
+    ],
+    "trace": [
+      {
+        "seq": 1,
+        "type": "tool_call",
+        "name": "search_employee",
+        "args": {
+          "name_or_id": "노유진"
+        }
+      },
+      {
+        "seq": 2,
+        "type": "tool_result",
+        "name": "search_employee",
+        "content": "{\"id\": \"SDS59261\", \"name\": \"노유진\", \"team\": \"물류플랫폼팀\", \"email\": \"yoojin.no@samsungsds.example.com\", \"phone\": \"010-6690-1824\", \"family\": [{\"name\": \"정우성\", \"relation\": \"배우자\", \"age\": 52}, {\"name\": \"노하준\", \"relation\": \"아들\", \"age\": 23}, {\"name\": \"노은서\", \"relation\": \"딸\", \"age\": 20}]}"
+      },
+      {
+        "seq": 3,
+        "type": "tool_call",
+        "name": "recommend_place",
+        "args": {
+          "region": "경주시 불국동",
+          "family": [
+            {
+              "name": "정우성",
+              "relation": "배우자",
+              "age": 52
+            },
+            {
+              "name": "노하준",
+              "relation": "아들",
+              "age": 23
+            },
+            {
+              "name": "노은서",
+              "relation": "딸",
+              "age": 20
+            }
+          ]
+        }
+      },
+      {
+        "seq": 4,
+        "type": "tool_result",
+        "name": "recommend_place",
+        "content": "{\"keyword_used\": \"가족여행\", \"note\": \"평점이 아니라 최근 블로그 언급이 많은 곳 기준입니다.\", \"추천_명소\": {\"name\": \"토함산\", \"address\": \"경북 경주시 마동 산 1-1\", \"mention_count\": 3030, \"url\": \"http://place.map.kakao.com/8107208\", \"lat\": 35.80177195761822, \"lng\": 129.34523390026058}, \"그_외_가볼만한_곳\": []}"
+      },
+      {
+        "seq": 5,
+        "type": "tool_call",
+        "name": "price_time",
+        "args": {
+          "dest_lat": 35.80177195761822,
+          "dest_lng": 129.34523390026058,
+          "dest_name": "토함산"
+        }
+      },
+      {
+        "seq": 5,
+        "type": "tool_call",
+        "name": "nearby_restaurant",
+        "args": {
+          "lat": 35.80177195761822,
+          "lng": 129.34523390026058
+        }
+      },
+      {
+        "seq": 6,
+        "type": "tool_result",
+        "name": "price_time",
+        "content": "{\"toll\": 10700, \"distance_km\": 186.49, \"duration_min\": 111, \"duration_display\": \"1시간 51분\", \"destination\": \"토함산\", \"origin_station\": \"서울영업소\", \"destination_station\": \"경주영업소\", \"note\": \"통행료·거리는 고속도로 영업소 구간만 포함한 값이고, 편도 소요시간은 삼성SDS 본사에서 추천 명소까지 실제 도로 기준(카카오모빌리티 길찾기) 값입니다.\"}"
+      },
+      {
+        "seq": 7,
+        "type": "tool_result",
+        "name": "nearby_restaurant",
+        "content": "{\"error\": \"주변에서 맛집을 찾을 수 없습니다.\"}"
+      },
+      {
+        "seq": 8,
+        "type": "tool_call",
+        "name": "traffic_calculator",
+        "args": {
+          "toll": 10700,
+          "distance_km": 186.49
+        }
+      },
+      {
+        "seq": 9,
+        "type": "tool_result",
+        "name": "traffic_calculator",
+        "content": "{\"round_trip_cost\": 77347}"
+      },
+      {
+        "seq": 10,
+        "type": "answer",
+        "content": "노유진님, 한 주간 고생 많으셨습니다! 😊 이번 주말에는 가족분들과 함께 경주의 아름다운 자연을 만끽하러 떠나보시는 건 어떨까요?\n\n### 🏞️ 이번 주 추천: [토함산](http://place.map.kakao.com/8107208)\n\n경주 [토함산](http://place.map.kakao.com/8107208)은 신라의 역사가 살아 숨 쉬는 명산입니다. 해발 745m의 완만한 능선을 따라 오르다 보면 울창한 숲과 맑은 공기가 일상의 피로를 씻어주고, 정상에서 바라보는 경주 시내와 동해 바다의 전망은 가족 모두에게 잊지 못할 추억을 선사할 것입니다. 특히 [토함산](http://place.map.kakao.com/8107208) 자락에 자리한 석굴암과 불국사는 세계문화유산으로, 등산과 함께 우리 문화유산의 아름다움을 느낄 수 있어 배우자님과 자녀분들 모두 의미 있는 시간을 보내실 수 있습니다. 가을 단풍이나 봄 신록의 계절이라면 더욱 환상적인 풍경을 만나실 수 있습니다.\n\n### 🍽️ 주변 맛집\n\n데이터 없음\n\n### 📋 참고 자료\n\n| 항목 | 내용 |\n|------|------|\n| 왕복 교통비 | 약 77,347원 |\n| 편도 소요시간 | 1시간 51분 |\n\n<div class=\"answer-footnote\">※ 위 교통비는 고속도로 통행료와 유류비를 포함한 추정치 입니다.<br>※ 명소 추천 근거는 평점이 아니라 최근 블로그 언급 빈도입니다.</div>"
+      }
+    ]
+  }
+}

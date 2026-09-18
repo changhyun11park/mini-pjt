@@ -1,0 +1,187 @@
+{
+  "case": {
+    "id": "6",
+    "category": "정상_광역_아이동반",
+    "employee": "윤서연",
+    "region": "강원도",
+    "question": "윤서연님 강원도 여행 추천해줘"
+  },
+  "result": {
+    "answer": "윤서연 님, 한 주 동안 정말 수고 많으셨어요! 😊 이번 주말에는 배우자님, 아드님, 따님과 함께 신나는 시간을 보내시는 건 어떨까요?\n\n### 🏞️ 이번 주 추천: [비발디파크 오션월드](http://place.map.kakao.com/7813421)\n\n강원도 홍천에 자리한 오션월드는 아이들과 함께라면 더욱 빛나는 곳입니다. 파도풀, 워터슬라이드, 유수풀 등 다양한 어트랙션이 가득해 아드님과 따님 모두 온종일 신나게 즐길 수 있어요. 어른도 함께 물놀이에 빠져들다 보면 어느새 일상의 피로가 싹 풀리는 기분을 느끼실 거예요. 가족 모두가 같은 공간에서 웃고 떠들며 추억을 쌓기에 이만한 곳이 없습니다.\n\n### 🍽️ 주변 맛집: [버거킹 오션월드점](http://place.map.kakao.com/7903911)\n\n강원특별자치도 홍천군 서면 한치골길 264\n\n### 📋 참고 자료\n\n| 항목 | 내용 |\n|------|------|\n| 왕복 교통비 | 약 63,379원 |\n| 편도 소요시간 | 1시간 26분 |\n\n<div class=\"answer-footnote\">※ 위 교통비는 고속도로 통행료와 유류비를 포함한 추정치 입니다.<br>※ 명소 추천 근거는 평점이 아니라 가족 구성 적합도와 최근 블로그 언급 빈도입니다.</div>",
+    "contexts": [
+      {
+        "tool": "search_employee",
+        "result": {
+          "id": "SDS72840",
+          "name": "윤서연",
+          "team": "클라우드운영팀",
+          "email": "seoyeon.yoon@samsungsds.example.com",
+          "phone": "010-8340-1726",
+          "family": [
+            {
+              "name": "박지원",
+              "relation": "배우자",
+              "age": 37
+            },
+            {
+              "name": "윤태민",
+              "relation": "아들",
+              "age": 10
+            },
+            {
+              "name": "윤소이",
+              "relation": "딸",
+              "age": 6
+            }
+          ],
+          "name_has_duplicates": false
+        }
+      },
+      {
+        "tool": "recommend_place",
+        "result": {
+          "keyword_used": "아이와 가볼만한",
+          "note": "평점이 아니라 가족 구성 적합도와 최근 블로그 언급 빈도를 각각 50%씩 반영한 순위입니다.",
+          "추천_명소": {
+            "name": "비발디파크 오션월드",
+            "address": "강원특별자치도 홍천군 서면 한치골길 262",
+            "mention_count": 67257,
+            "url": "http://place.map.kakao.com/7813421",
+            "lat": 37.6499534973208,
+            "lng": 127.68691203933
+          },
+          "그_외_가볼만한_곳": []
+        }
+      },
+      {
+        "tool": "price_time",
+        "result": {
+          "toll": 8900,
+          "distance_km": 151.93,
+          "duration_min": 86,
+          "duration_display": "1시간 26분",
+          "destination": "비발디파크 오션월드",
+          "origin_station": "서울영업소",
+          "destination_station": "홍천영업소",
+          "note": "통행료·거리는 고속도로 영업소 구간만 포함한 값이고, 편도 소요시간은 삼성SDS 본사에서 추천 명소까지 실제 도로 기준(카카오모빌리티 길찾기) 값입니다."
+        }
+      },
+      {
+        "tool": "nearby_restaurant",
+        "result": {
+          "note": "평점이 아니라 최근 블로그 언급이 많은 곳 기준입니다.",
+          "추천_맛집": {
+            "name": "버거킹 오션월드점",
+            "address": "강원특별자치도 홍천군 서면 한치골길 264",
+            "mention_count": 40096,
+            "url": "http://place.map.kakao.com/7903911"
+          }
+        }
+      },
+      {
+        "tool": "traffic_calculator",
+        "result": {
+          "round_trip_cost": 63379
+        }
+      }
+    ],
+    "trace": [
+      {
+        "seq": 1,
+        "type": "tool_call",
+        "name": "search_employee",
+        "args": {
+          "name_or_id": "윤서연"
+        }
+      },
+      {
+        "seq": 2,
+        "type": "tool_result",
+        "name": "search_employee",
+        "content": "{\"id\": \"SDS72840\", \"name\": \"윤서연\", \"team\": \"클라우드운영팀\", \"email\": \"seoyeon.yoon@samsungsds.example.com\", \"phone\": \"010-8340-1726\", \"family\": [{\"name\": \"박지원\", \"relation\": \"배우자\", \"age\": 37}, {\"name\": \"윤태민\", \"relation\": \"아들\", \"age\": 10}, {\"name\": \"윤소이\", \"relation\": \"딸\", \"age\": 6}], \"name_has_duplicates\": false}"
+      },
+      {
+        "seq": 3,
+        "type": "tool_call",
+        "name": "recommend_place",
+        "args": {
+          "region": "강원도",
+          "family": [
+            {
+              "name": "박지원",
+              "relation": "배우자",
+              "age": 37
+            },
+            {
+              "name": "윤태민",
+              "relation": "아들",
+              "age": 10
+            },
+            {
+              "name": "윤소이",
+              "relation": "딸",
+              "age": 6
+            }
+          ]
+        }
+      },
+      {
+        "seq": 4,
+        "type": "tool_result",
+        "name": "recommend_place",
+        "content": "{\"keyword_used\": \"아이와 가볼만한\", \"note\": \"평점이 아니라 가족 구성 적합도와 최근 블로그 언급 빈도를 각각 50%씩 반영한 순위입니다.\", \"추천_명소\": {\"name\": \"비발디파크 오션월드\", \"address\": \"강원특별자치도 홍천군 서면 한치골길 262\", \"mention_count\": 67257, \"url\": \"http://place.map.kakao.com/7813421\", \"lat\": 37.6499534973208, \"lng\": 127.68691203933}, \"그_외_가볼만한_곳\": []}"
+      },
+      {
+        "seq": 5,
+        "type": "tool_call",
+        "name": "price_time",
+        "args": {
+          "dest_lat": 37.6499534973208,
+          "dest_lng": 127.68691203933,
+          "dest_name": "비발디파크 오션월드"
+        }
+      },
+      {
+        "seq": 5,
+        "type": "tool_call",
+        "name": "nearby_restaurant",
+        "args": {
+          "lat": 37.6499534973208,
+          "lng": 127.68691203933
+        }
+      },
+      {
+        "seq": 6,
+        "type": "tool_result",
+        "name": "price_time",
+        "content": "{\"toll\": 8900, \"distance_km\": 151.93, \"duration_min\": 86, \"duration_display\": \"1시간 26분\", \"destination\": \"비발디파크 오션월드\", \"origin_station\": \"서울영업소\", \"destination_station\": \"홍천영업소\", \"note\": \"통행료·거리는 고속도로 영업소 구간만 포함한 값이고, 편도 소요시간은 삼성SDS 본사에서 추천 명소까지 실제 도로 기준(카카오모빌리티 길찾기) 값입니다.\"}"
+      },
+      {
+        "seq": 7,
+        "type": "tool_result",
+        "name": "nearby_restaurant",
+        "content": "{\"note\": \"평점이 아니라 최근 블로그 언급이 많은 곳 기준입니다.\", \"추천_맛집\": {\"name\": \"버거킹 오션월드점\", \"address\": \"강원특별자치도 홍천군 서면 한치골길 264\", \"mention_count\": 40096, \"url\": \"http://place.map.kakao.com/7903911\"}}"
+      },
+      {
+        "seq": 8,
+        "type": "tool_call",
+        "name": "traffic_calculator",
+        "args": {
+          "toll": 8900,
+          "distance_km": 151.93
+        }
+      },
+      {
+        "seq": 9,
+        "type": "tool_result",
+        "name": "traffic_calculator",
+        "content": "{\"round_trip_cost\": 63379}"
+      },
+      {
+        "seq": 10,
+        "type": "answer",
+        "content": "윤서연 님, 한 주 동안 정말 수고 많으셨어요! 😊 이번 주말에는 배우자님, 아드님, 따님과 함께 신나는 시간을 보내시는 건 어떨까요?\n\n### 🏞️ 이번 주 추천: [비발디파크 오션월드](http://place.map.kakao.com/7813421)\n\n강원도 홍천에 자리한 오션월드는 아이들과 함께라면 더욱 빛나는 곳입니다. 파도풀, 워터슬라이드, 유수풀 등 다양한 어트랙션이 가득해 아드님과 따님 모두 온종일 신나게 즐길 수 있어요. 어른도 함께 물놀이에 빠져들다 보면 어느새 일상의 피로가 싹 풀리는 기분을 느끼실 거예요. 가족 모두가 같은 공간에서 웃고 떠들며 추억을 쌓기에 이만한 곳이 없습니다.\n\n### 🍽️ 주변 맛집: [버거킹 오션월드점](http://place.map.kakao.com/7903911)\n\n강원특별자치도 홍천군 서면 한치골길 264\n\n### 📋 참고 자료\n\n| 항목 | 내용 |\n|------|------|\n| 왕복 교통비 | 약 63,379원 |\n| 편도 소요시간 | 1시간 26분 |\n\n<div class=\"answer-footnote\">※ 위 교통비는 고속도로 통행료와 유류비를 포함한 추정치 입니다.<br>※ 명소 추천 근거는 평점이 아니라 가족 구성 적합도와 최근 블로그 언급 빈도입니다.</div>"
+      }
+    ]
+  }
+}

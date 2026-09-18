@@ -1,0 +1,552 @@
+<!doctype html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>주말 여행지 추천 Agent</title>
+<style>
+  :root {
+    --bg: #f5f6fb;
+    --card-bg: #ffffff;
+    --border: #e3e5ee;
+    --text: #23243a;
+    --sub: #6b6d84;
+    --accent: #4b4ee0;
+    --accent-dark: #3c3fbf;
+    --error: #d0334c;
+  }
+  * { box-sizing: border-box; }
+  body {
+    margin: 0;
+    padding: 40px 16px 80px;
+    background: var(--bg);
+    color: var(--text);
+    font-family: "Malgun Gothic", "Apple SD Gothic Neo", "Pretendard", sans-serif;
+    min-height: 100vh;
+  }
+  /* 검색 당시 날짜(계절)에 맞춰 body에 season-* 클래스를 붙이고, 배경을 계절 그라데이션으로 바꾼다 */
+  body.season-spring { background: linear-gradient(180deg, #ffe1ea 0%, #fff6e6 35%, #eaf7d9 70%, #d9f2c4 100%); }
+  body.season-summer { background: linear-gradient(180deg, #bfe3ff 0%, #e3f7ee 45%, #d3f3d8 100%); }
+  body.season-fall   { background: linear-gradient(180deg, #ffe2b8 0%, #ffcf9c 45%, #f0a873 100%); }
+  body.season-winter { background: linear-gradient(180deg, #eef5fb 0%, #dcebfb 50%, #ffffff 100%); }
+  #season-fx {
+    position: fixed;
+    inset: 0;
+    overflow: hidden;
+    pointer-events: none;
+    z-index: 0;
+  }
+  #season-fx .particle {
+    position: absolute;
+    top: -10%;
+    line-height: 1;
+    animation: season-drift linear infinite;
+  }
+  @keyframes season-drift {
+    from { transform: translateY(-10vh) translateX(0); opacity: 0; }
+    10% { opacity: 0.85; }
+    90% { opacity: 0.85; }
+    to { transform: translateY(110vh) translateX(24px); opacity: 0; }
+  }
+  @media (prefers-reduced-motion: reduce) {
+    #season-fx .particle { animation: none; display: none; }
+  }
+  .wrap { max-width: 1080px; margin: 0 auto; position: relative; z-index: 1; }
+  .layout {
+    display: grid;
+    grid-template-columns: 320px 1fr;
+    gap: 24px;
+    align-items: start;
+  }
+  @media (max-width: 760px) {
+    .layout { grid-template-columns: 1fr; }
+  }
+  .form-panel { position: sticky; top: 24px; }
+  h1 {
+    font-size: 1.5rem;
+    margin: 0 0 6px;
+  }
+  p.desc {
+    color: var(--sub);
+    margin: 0 0 28px;
+    font-size: 0.92rem;
+  }
+  .card {
+    background: var(--card-bg);
+    border: 1px solid var(--border);
+    border-radius: 14px;
+    padding: 24px;
+    margin-bottom: 20px;
+    box-shadow: 0 1px 2px rgba(30, 32, 60, 0.04);
+  }
+  label {
+    display: block;
+    font-weight: 600;
+    font-size: 0.92rem;
+    margin-bottom: 6px;
+  }
+  input[type="text"] {
+    width: 100%;
+    padding: 11px 14px;
+    border: 1px solid var(--border);
+    border-radius: 9px;
+    font-size: 1rem;
+    margin-bottom: 18px;
+    font-family: inherit;
+  }
+  input[type="text"]:focus {
+    outline: none;
+    border-color: var(--accent);
+  }
+  button {
+    background: var(--accent);
+    color: #fff;
+    border: none;
+    padding: 12px 22px;
+    border-radius: 9px;
+    font-size: 1rem;
+    font-weight: 600;
+    cursor: pointer;
+  }
+  button:hover:not(:disabled) { background: var(--accent-dark); }
+  button:disabled { opacity: 0.55; cursor: default; }
+  .form-error {
+    color: var(--error);
+    font-weight: 600;
+    font-size: 0.9rem;
+    margin: -8px 0 16px;
+    display: none;
+  }
+  #results { display: flex; flex-direction: column; gap: 20px; }
+  .result-card .summary {
+    color: var(--sub);
+    font-size: 0.88rem;
+    padding-bottom: 12px;
+    margin-bottom: 14px;
+    border-bottom: 1px solid var(--border);
+  }
+  .result-card .summary b { color: var(--text); }
+  /* 조회 성공(초록 계열) / 실패·재확인 필요(분홍 계열)을 답변 텍스트 박스 배경색으로 구분한다 */
+  .answer {
+    padding: 14px 16px;
+    border-radius: 10px;
+    transition: background-color 0.2s ease;
+  }
+  .answer.loading {
+    color: var(--sub);
+    font-style: italic;
+    background: #f2f2f8;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    flex-wrap: wrap;
+  }
+  .answer.success { background: #e6f6df; }
+  .answer.fail { background: #fce7ee; }
+  .car-track {
+    position: relative;
+    display: inline-block;
+    width: 64px;
+    height: 22px;
+    overflow: hidden;
+    flex-shrink: 0;
+  }
+  .car-track .car {
+    position: absolute;
+    left: -26px;
+    top: 0;
+    font-size: 1.1rem;
+    animation: car-drive 1.6s linear infinite;
+  }
+  @keyframes car-drive {
+    from { left: -26px; }
+    to { left: 64px; }
+  }
+  @media (prefers-reduced-motion: reduce) {
+    .car-track .car { animation: none; left: 20px; }
+  }
+  .answer.error { color: var(--error); background: #fce7ee; }
+  .answer h1, .answer h2, .answer h3 { font-size: 1.05rem; margin: 14px 0 8px; }
+  .answer p { line-height: 1.65; margin: 0 0 10px; }
+  .answer table {
+    border-collapse: collapse;
+    width: 100%;
+    margin: 12px 0;
+    font-size: 0.92rem;
+  }
+  .answer th, .answer td {
+    border: 1px solid #9698a8;
+    padding: 8px 12px;
+    background: #f6f6f8;
+  }
+  .answer th { text-align: center; font-weight: 700; }
+  .answer td { text-align: left; }
+  .answer-footnote {
+    font-size: 0.76rem;
+    line-height: 1.7;
+    color: var(--sub);
+    margin-top: 10px;
+  }
+  .employee-email {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    background: #eef0fb;
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    padding: 8px 12px;
+    font-size: 0.88rem;
+    margin-bottom: 12px;
+  }
+  .employee-email a { color: var(--accent); font-weight: 600; text-decoration: none; }
+  .employee-email a:hover { text-decoration: underline; }
+  .candidates-label {
+    font-weight: 600;
+    font-size: 0.9rem;
+    margin-bottom: 10px;
+  }
+  .candidate-btn {
+    display: block;
+    width: 100%;
+    text-align: left;
+    background: #f7f7fc;
+    color: var(--text);
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    padding: 10px 14px;
+    font-size: 0.92rem;
+    font-weight: 500;
+    margin-bottom: 8px;
+    cursor: pointer;
+  }
+  .candidate-btn:hover { border-color: var(--accent); background: #eeeeff; }
+  .candidate-btn:last-child { margin-bottom: 0; }
+  .lookup-title { font-weight: 600; font-size: 0.92rem; margin-bottom: 12px; }
+  .lookup-table { width: 100%; border-collapse: collapse; font-size: 0.88rem; }
+  .lookup-table th, .lookup-table td {
+    border: 1px solid var(--border);
+    padding: 8px 10px;
+    text-align: left;
+  }
+  .lookup-table th { background: #f2f2f8; font-weight: 700; }
+  .lookup-table tr.lookup-empty td { color: var(--sub); text-align: center; font-style: italic; }
+  .lookup-name-link {
+    background: none;
+    border: none;
+    padding: 0;
+    margin: 0;
+    font: inherit;
+    color: var(--accent);
+    text-decoration: underline;
+    cursor: pointer;
+    text-align: left;
+  }
+  .lookup-name-link:hover { color: var(--accent-dark); }
+</style>
+</head>
+<body>
+<div id="season-fx" aria-hidden="true"></div>
+<div class="wrap">
+  <h1>🧳 주말에 어디가?</h1>
+  <p class="desc">임직원 이름과 지역명을 입력하면, 가족 구성에 맞는 주말 여행지를 추천해 드립니다.</p>
+
+  <div class="layout">
+    <div class="form-panel">
+      <div class="card">
+        <form id="query-form" novalidate>
+          <label for="name-input">임직원 이름</label>
+          <input id="name-input" type="text" placeholder="예: 홍길동" autocomplete="off">
+          <label for="region-input">지역명</label>
+          <input id="region-input" type="text" placeholder="예: 강원도, 속초" autocomplete="off">
+          <div id="form-error" class="form-error"></div>
+          <button type="submit" id="submit-btn">추천받기</button>
+        </form>
+      </div>
+      <div class="card">
+        <div class="lookup-title">📋 조회 결과</div>
+        <table class="lookup-table">
+          <thead>
+            <tr><th>임직원 이름</th><th>지역명</th></tr>
+          </thead>
+          <tbody id="lookup-tbody">
+            <tr class="lookup-empty"><td colspan="2">아직 조회 내역이 없습니다.</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+
+    <div class="results-panel">
+      <div id="results"></div>
+    </div>
+  </div>
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
+<script>
+  // 단일 줄바꿈도 <br>로 바꿔서, 명소 소개 같은 긴 문단이 붙어 보이지 않고 가독성 있게 나오게 한다.
+  marked.setOptions({ breaks: true });
+
+  // 검색 당시(오늘) 날짜로 계절을 판정해 배경을 계절 자연경관 느낌으로 바꾼다.
+  (function setupSeasonBackground() {
+    const month = new Date().getMonth() + 1;
+    let season, emojis;
+    if (month >= 3 && month <= 5) { season = "spring"; emojis = ["🌸", "🌷"]; }
+    else if (month >= 6 && month <= 8) { season = "summer"; emojis = ["🍃", "🌿"]; }
+    else if (month >= 9 && month <= 11) { season = "fall"; emojis = ["🍁", "🍂"]; }
+    else { season = "winter"; emojis = ["❄️", "❆"]; }
+
+    document.body.classList.add("season-" + season);
+
+    const fx = document.getElementById("season-fx");
+    for (let i = 0; i < 10; i++) {
+      const span = document.createElement("span");
+      span.className = "particle";
+      span.textContent = emojis[i % emojis.length];
+      span.style.left = Math.random() * 100 + "vw";
+      span.style.fontSize = (14 + Math.random() * 16) + "px";
+      span.style.animationDuration = (10 + Math.random() * 10) + "s";
+      span.style.animationDelay = -(Math.random() * 15) + "s";
+      fx.appendChild(span);
+    }
+  })();
+
+  // 순수 한글(자모 포함) + 공백만 허용. 영어/숫자/특수문자는 거부한다.
+  const KOREAN_ONLY = /^[가-힣ㄱ-ㅎㅏ-ㅣ\s]+$/;
+  // 동명이인 재확인 시 담당자가 "SDS12345" 형태의 임직원ID로 답할 수 있어야 하므로,
+  // 이름 입력란만 이 패턴을 한글 규칙의 예외로 허용한다.
+  const EMPLOYEE_ID = /^SDS\d{5}$/i;
+  // 동명이인 후보를 클릭하면 이름 입력란에 "이름(사번)" 형태로 채운다 — 이것도 예외로 허용한다.
+  const NAME_WITH_ID = /^([가-힣]+)\((SDS\d{5})\)$/i;
+
+  const form = document.getElementById("query-form");
+  const nameInput = document.getElementById("name-input");
+  const regionInput = document.getElementById("region-input");
+  const errorBox = document.getElementById("form-error");
+  const submitBtn = document.getElementById("submit-btn");
+  const results = document.getElementById("results");
+
+  function showFormError(msg) {
+    errorBox.textContent = msg;
+    errorBox.style.display = "block";
+  }
+  function clearFormError() {
+    errorBox.style.display = "none";
+    errorBox.textContent = "";
+  }
+  function escapeHtml(s) {
+    return s.replace(/[&<>"']/g, (c) => ({
+      "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;",
+    }[c]));
+  }
+
+  // 동명이인이면 search_employee 결과(contexts)에 ambiguous:true + candidates가 들어온다.
+  // 이 후보 목록을 클릭 가능한 버튼으로 보여주고, 클릭한 후보의 임직원ID를 다음 조회의
+  // 입력값으로 그대로 사용한다(직접 타이핑할 필요가 없게).
+  function findAmbiguousCandidates(contexts) {
+    const ctx = (contexts || []).find(
+      (c) => c.tool === "search_employee" && c.result && c.result.ambiguous === true
+    );
+    return ctx ? ctx.result.candidates || [] : null;
+  }
+
+  // traffic_calculator까지 실제로 끝나야 "조회 성공"으로 본다. 동명이인 재확인·
+  // 지역 가드레일 되묻기·데이터 없음 등은 전부 실패(재확인 필요)로 취급한다.
+  function hasCompletedRecommendation(contexts) {
+    return (contexts || []).some(
+      (c) => c.tool === "traffic_calculator" && c.result && typeof c.result.round_trip_cost !== "undefined"
+    );
+  }
+
+  // search_employee가 특정 임직원 1인을 확정한 경우(동명이인 후보 목록이 아니라 email이
+  // 있는 단일 레코드)에만 메일 주소를 알 수 있다. 담당자가 바로 메일을 보낼 수 있도록
+  // 답변 맨 위에 고정으로 보여준다. 다만 지역명이 가드레일(북한/해외/존재하지 않는
+  // 지역)에 걸려 조회가 막힌 경우에는 임직원이 특정됐더라도 이메일을 보여주지 않는다.
+  function findEmployeeEmail(contexts) {
+    const regionBlocked = (contexts || []).some(
+      (c) => c.tool === "recommend_place" && c.result && c.result.invalid_region === true
+    );
+    if (regionBlocked) return null;
+
+    const ctx = (contexts || []).find(
+      (c) => c.tool === "search_employee" && c.result && c.result.email
+    );
+    return ctx ? { name: ctx.result.name, email: ctx.result.email } : null;
+  }
+
+  // search_employee가 임직원 1명을 특정한 경우(동명이인 후보 목록·미등록 오류가 아님)만
+  // "조회 완료"로 본다 — 지역이 가드레일에 걸려도 임직원 조회 자체는 끝난 것이므로 포함한다.
+  // name_has_duplicates는 tool_employee.py가 등록 데이터 기준으로 판정해 함께 내려준다
+  // (화면에 지금 같이 떠 있는 다른 행과 우연히 겹치는지가 아니라, 그 이름 자체가
+  // 동명이인인지를 항상 같은 값으로 보여줄 수 있다).
+  function findResolvedEmployee(contexts) {
+    const ctx = (contexts || []).find(
+      (c) => c.tool === "search_employee" && c.result && c.result.name && !c.result.ambiguous && !c.result.error
+    );
+    return ctx
+      ? { id: ctx.result.id, name: ctx.result.name, hasDuplicates: !!ctx.result.name_has_duplicates }
+      : null;
+  }
+
+  // 입력창 하단에 지금까지 조회가 완료된 임직원 이름·지역명을 표로 누적해서 보여준다.
+  // 동명이인 이름이면 "이름(사번)"으로 구분한다. 이름을 클릭하면 결과 패널의 해당
+  // 답변 카드(cardId)로 스크롤 이동한다.
+  const lookupHistory = [];
+
+  function renderLookupHistory() {
+    const tbody = document.getElementById("lookup-tbody");
+    tbody.innerHTML = "";
+    if (!lookupHistory.length) {
+      tbody.innerHTML = '<tr class="lookup-empty"><td colspan="2">아직 조회 내역이 없습니다.</td></tr>';
+      return;
+    }
+    lookupHistory.forEach((entry) => {
+      const displayName = entry.hasDuplicates ? entry.name + "(" + entry.id + ")" : entry.name;
+      const tr = document.createElement("tr");
+
+      const nameTd = document.createElement("td");
+      const nameBtn = document.createElement("button");
+      nameBtn.type = "button";
+      nameBtn.className = "lookup-name-link";
+      nameBtn.textContent = displayName;
+      nameBtn.addEventListener("click", () => {
+        const target = document.getElementById(entry.cardId);
+        if (target) target.scrollIntoView({ behavior: "smooth", block: "start" });
+      });
+      nameTd.appendChild(nameBtn);
+
+      const regionTd = document.createElement("td");
+      regionTd.textContent = entry.region;
+
+      tr.appendChild(nameTd);
+      tr.appendChild(regionTd);
+      tbody.appendChild(tr);
+    });
+  }
+
+  // 동명이인일 때는 LLM이 쓴 원문 답변(후보를 텍스트로 나열한 문장)은 보여주지 않고,
+  // 선택 버튼만 보여준다.
+  function renderCandidates(container, candidates, region) {
+    container.innerHTML = "";
+    const label = document.createElement("div");
+    label.className = "candidates-label";
+    label.textContent = "동명이인이 있습니다. 아래에서 대상자를 선택하세요.";
+    container.appendChild(label);
+    candidates.forEach((cand) => {
+      const btn = document.createElement("button");
+      btn.type = "button";
+      btn.className = "candidate-btn";
+      btn.textContent = cand.name + " · " + cand.team + " (" + cand.id + ")";
+      btn.addEventListener("click", () => {
+        const displayName = cand.name + "(" + cand.id + ")";
+        nameInput.value = displayName;
+        runQuery(displayName, region);
+      });
+      container.appendChild(btn);
+    });
+  }
+
+  let resultCardSeq = 0;
+
+  async function runQuery(name, region) {
+    submitBtn.disabled = true;
+    submitBtn.textContent = "조회 중...";
+
+    const cardId = "result-card-" + (++resultCardSeq);
+    const card = document.createElement("div");
+    card.id = cardId;
+    card.className = "card result-card";
+    card.innerHTML =
+      '<div class="summary"><b>임직원 이름:</b> ' + escapeHtml(name) +
+      '&nbsp;&nbsp;|&nbsp;&nbsp;<b>지역명:</b> ' + escapeHtml(region) + "</div>" +
+      '<div class="answer loading">' +
+      '<span>답변을 준비하고 있습니다... (최대 1분 정도 걸릴 수 있습니다)</span>' +
+      '<span class="car-track"><span class="car">🚗</span></span>' +
+      "</div>";
+    results.insertBefore(card, results.firstChild);
+    card.scrollIntoView({ behavior: "smooth", block: "start" });
+    const answerBox = card.querySelector(".answer");
+
+    try {
+      // "이름(사번)" 형태로 채워졌다면 사번만 추려 조회한다(사번이 있으면 동명이인 없이
+      // 바로 특정되므로) — 화면에는 이름(사번) 그대로 계속 보여준다.
+      const idMatch = name.match(NAME_WITH_ID);
+      const queryName = idMatch ? idMatch[2] : name;
+      const question = queryName + "님 " + region + " 여행 추천해줘";
+      const resp = await fetch("/query", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ question }),
+      });
+      if (!resp.ok) {
+        throw new Error("서버 오류가 발생했습니다 (" + resp.status + ")");
+      }
+      const data = await resp.json();
+      answerBox.classList.remove("loading");
+
+      // 필터·가드레일(동명이인 재확인, 지역 미입력·무효, 데이터 없음 등)에 걸려
+      // 답변이 중간에 멈춘 경우는 조회 결과에 쌓지 않는다 — traffic_calculator까지
+      // 실제로 끝나 추천 답변이 완성된 경우에만 기록한다.
+      const resolvedEmployee = findResolvedEmployee(data.contexts);
+      if (resolvedEmployee && hasCompletedRecommendation(data.contexts)) {
+        lookupHistory.unshift({
+          name: resolvedEmployee.name,
+          id: resolvedEmployee.id,
+          hasDuplicates: resolvedEmployee.hasDuplicates,
+          region,
+          cardId,
+        });
+        renderLookupHistory();
+      }
+
+      const candidates = findAmbiguousCandidates(data.contexts);
+      if (candidates && candidates.length) {
+        renderCandidates(answerBox, candidates, region);
+        answerBox.classList.add("fail");
+      } else {
+        answerBox.innerHTML = marked.parse(data.answer || "답변이 비어 있습니다.");
+        answerBox.classList.add(hasCompletedRecommendation(data.contexts) ? "success" : "fail");
+      }
+
+      const employee = findEmployeeEmail(data.contexts);
+      if (employee) {
+        const banner = document.createElement("div");
+        banner.className = "employee-email";
+        banner.innerHTML =
+          "✉️ " + escapeHtml(employee.name) + "님 메일: " +
+          '<a href="mailto:' + escapeHtml(employee.email) + '">' + escapeHtml(employee.email) + "</a>";
+        answerBox.insertBefore(banner, answerBox.firstChild);
+      }
+    } catch (err) {
+      answerBox.classList.remove("loading");
+      answerBox.classList.add("error", "fail");
+      answerBox.textContent = "요청 처리 중 오류가 발생했습니다: " + err.message;
+    } finally {
+      submitBtn.disabled = false;
+      submitBtn.textContent = "추천받기";
+    }
+  }
+
+  form.addEventListener("submit", (e) => {
+    e.preventDefault();
+    clearFormError();
+
+    const name = nameInput.value.trim();
+    const region = regionInput.value.trim();
+
+    if (!name || !region) {
+      showFormError("빈칸을 모두 입력하세요.");
+      return;
+    }
+
+    const nameOk = KOREAN_ONLY.test(name) || EMPLOYEE_ID.test(name) || NAME_WITH_ID.test(name);
+    const regionOk = KOREAN_ONLY.test(region);
+    if (!nameOk || !regionOk) {
+      showFormError("한국어로만 입력하세요.");
+      return;
+    }
+
+    runQuery(name, region);
+  });
+</script>
+</body>
+</html>

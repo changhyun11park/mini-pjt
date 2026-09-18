@@ -1,0 +1,176 @@
+{
+  "case": {
+    "id": "7",
+    "category": "정상_광역_커플",
+    "employee": "정하은",
+    "region": "경상남도",
+    "question": "정하은님 경상남도 여행 추천해줘"
+  },
+  "result": {
+    "answer": "정하은님, 한 주간 고생 많으셨습니다! 😊 이번 주말에는 배우자님과 함께 여유로운 시간을 보내며 재충전하시는 건 어떨까요?\n\n### 🏞️ 이번 주 추천: [덕정카페거리](http://place.map.kakao.com/660864379)\n\n경남 김해에 자리한 덕정카페거리는 아기자기한 카페들이 모여 있어 여유로운 주말을 보내기에 완벽한 곳입니다. 각기 다른 개성을 가진 카페들을 둘러보며 맛있는 커피 한 잔과 함께 배우자님과 소중한 대화를 나누실 수 있습니다. 골목골목 숨어 있는 감성적인 공간들을 발견하는 재미도 쏠쏠하고, 사진 찍기 좋은 포토존도 많아 추억을 남기기에도 좋습니다. 분주한 일상에서 벗어나 느긋하게 산책하며 힐링하기에 더없이 좋은 곳입니다.\n\n### 🧭 함께 가볼 곳: [창원가로수길 카페거리](http://place.map.kakao.com/1143702160)\n\n덕정카페거리와 비슷한 분위기를 즐기고 싶으시다면 창원가로수길 카페거리도 들러보세요. 이름처럼 가로수가 우거진 거리를 따라 세련된 카페들이 늘어서 있어, 또 다른 감성을 느끼실 수 있습니다. 두 곳을 함께 방문하시면 각기 다른 매력을 비교해보는 재미도 있을 거예요.\n\n### 🍽️ 주변 맛집: [고향마당뒷고기](http://place.map.kakao.com/349628342)\n\n경남 김해시 덕정로 196\n\n### 📋 참고 자료\n\n| 항목 | 내용 |\n|------|------|\n| 왕복 교통비 | 약 89,748원 |\n| 편도 소요시간 | 4시간 23분 |\n\n<div class=\"answer-footnote\">※ 위 교통비는 고속도로 통행료와 유류비를 포함한 추정치 입니다.<br>※ 명소 추천 근거는 평점이 아니라 최근 블로그 언급 빈도입니다.</div>",
+    "contexts": [
+      {
+        "tool": "search_employee",
+        "result": {
+          "id": "SDS58734",
+          "name": "정하은",
+          "team": "클라우드운영팀",
+          "email": "haeun.jung@samsungsds.example.com",
+          "phone": "010-6183-4409",
+          "family": [
+            {
+              "name": "김도현",
+              "relation": "배우자",
+              "age": 35
+            }
+          ]
+        }
+      },
+      {
+        "tool": "recommend_place",
+        "result": {
+          "keyword_used": "커플 여행",
+          "note": "평점이 아니라 최근 블로그 언급이 많은 곳 기준입니다.",
+          "추천_명소": {
+            "name": "덕정카페거리",
+            "address": "경남 김해시 관동동 492",
+            "mention_count": 1036799,
+            "url": "http://place.map.kakao.com/660864379",
+            "lat": 35.1749167314104,
+            "lng": 128.803126881371
+          },
+          "그_외_가볼만한_곳": [
+            {
+              "name": "창원가로수길 카페거리",
+              "address": "경남 창원시 성산구 용호동 503",
+              "mention_count": 17368,
+              "url": "http://place.map.kakao.com/1143702160",
+              "lat": 35.2376629055924,
+              "lng": 128.682039214726,
+              "duration_min": 28
+            }
+          ]
+        }
+      },
+      {
+        "tool": "price_time",
+        "result": {
+          "toll": 11400,
+          "distance_km": 223.16000000000003,
+          "duration_min": 263,
+          "duration_display": "4시간 23분",
+          "destination": "덕정카페거리",
+          "origin_station": "서울영업소",
+          "destination_station": "창원영업소",
+          "note": "통행료·거리는 고속도로 영업소 구간만 포함한 값이고, 편도 소요시간은 삼성SDS 본사에서 추천 명소까지 실제 도로 기준(카카오모빌리티 길찾기) 값입니다."
+        }
+      },
+      {
+        "tool": "nearby_restaurant",
+        "result": {
+          "note": "평점이 아니라 최근 블로그 언급이 많은 곳 기준입니다.",
+          "추천_맛집": {
+            "name": "고향마당뒷고기",
+            "address": "경남 김해시 덕정로 196",
+            "mention_count": 7949,
+            "url": "http://place.map.kakao.com/349628342"
+          }
+        }
+      },
+      {
+        "tool": "traffic_calculator",
+        "result": {
+          "round_trip_cost": 89748
+        }
+      }
+    ],
+    "trace": [
+      {
+        "seq": 1,
+        "type": "tool_call",
+        "name": "search_employee",
+        "args": {
+          "name_or_id": "정하은"
+        }
+      },
+      {
+        "seq": 2,
+        "type": "tool_result",
+        "name": "search_employee",
+        "content": "{\"id\": \"SDS58734\", \"name\": \"정하은\", \"team\": \"클라우드운영팀\", \"email\": \"haeun.jung@samsungsds.example.com\", \"phone\": \"010-6183-4409\", \"family\": [{\"name\": \"김도현\", \"relation\": \"배우자\", \"age\": 35}]}"
+      },
+      {
+        "seq": 3,
+        "type": "tool_call",
+        "name": "recommend_place",
+        "args": {
+          "region": "경상남도",
+          "family": [
+            {
+              "name": "김도현",
+              "relation": "배우자",
+              "age": 35
+            }
+          ]
+        }
+      },
+      {
+        "seq": 4,
+        "type": "tool_result",
+        "name": "recommend_place",
+        "content": "{\"keyword_used\": \"커플 여행\", \"note\": \"평점이 아니라 최근 블로그 언급이 많은 곳 기준입니다.\", \"추천_명소\": {\"name\": \"덕정카페거리\", \"address\": \"경남 김해시 관동동 492\", \"mention_count\": 1036799, \"url\": \"http://place.map.kakao.com/660864379\", \"lat\": 35.1749167314104, \"lng\": 128.803126881371}, \"그_외_가볼만한_곳\": [{\"name\": \"창원가로수길 카페거리\", \"address\": \"경남 창원시 성산구 용호동 503\", \"mention_count\": 17368, \"url\": \"http://place.map.kakao.com/1143702160\", \"lat\": 35.2376629055924, \"lng\": 128.682039214726, \"duration_min\": 28}]}"
+      },
+      {
+        "seq": 5,
+        "type": "tool_call",
+        "name": "price_time",
+        "args": {
+          "dest_lat": 35.1749167314104,
+          "dest_lng": 128.803126881371,
+          "dest_name": "덕정카페거리"
+        }
+      },
+      {
+        "seq": 5,
+        "type": "tool_call",
+        "name": "nearby_restaurant",
+        "args": {
+          "lat": 35.1749167314104,
+          "lng": 128.803126881371
+        }
+      },
+      {
+        "seq": 6,
+        "type": "tool_result",
+        "name": "price_time",
+        "content": "{\"toll\": 11400, \"distance_km\": 223.16000000000003, \"duration_min\": 263, \"duration_display\": \"4시간 23분\", \"destination\": \"덕정카페거리\", \"origin_station\": \"서울영업소\", \"destination_station\": \"창원영업소\", \"note\": \"통행료·거리는 고속도로 영업소 구간만 포함한 값이고, 편도 소요시간은 삼성SDS 본사에서 추천 명소까지 실제 도로 기준(카카오모빌리티 길찾기) 값입니다.\"}"
+      },
+      {
+        "seq": 7,
+        "type": "tool_result",
+        "name": "nearby_restaurant",
+        "content": "{\"note\": \"평점이 아니라 최근 블로그 언급이 많은 곳 기준입니다.\", \"추천_맛집\": {\"name\": \"고향마당뒷고기\", \"address\": \"경남 김해시 덕정로 196\", \"mention_count\": 7949, \"url\": \"http://place.map.kakao.com/349628342\"}}"
+      },
+      {
+        "seq": 8,
+        "type": "tool_call",
+        "name": "traffic_calculator",
+        "args": {
+          "toll": 11400,
+          "distance_km": 223.16000000000003
+        }
+      },
+      {
+        "seq": 9,
+        "type": "tool_result",
+        "name": "traffic_calculator",
+        "content": "{\"round_trip_cost\": 89748}"
+      },
+      {
+        "seq": 10,
+        "type": "answer",
+        "content": "정하은님, 한 주간 고생 많으셨습니다! 😊 이번 주말에는 배우자님과 함께 여유로운 시간을 보내며 재충전하시는 건 어떨까요?\n\n### 🏞️ 이번 주 추천: [덕정카페거리](http://place.map.kakao.com/660864379)\n\n경남 김해에 자리한 덕정카페거리는 아기자기한 카페들이 모여 있어 여유로운 주말을 보내기에 완벽한 곳입니다. 각기 다른 개성을 가진 카페들을 둘러보며 맛있는 커피 한 잔과 함께 배우자님과 소중한 대화를 나누실 수 있습니다. 골목골목 숨어 있는 감성적인 공간들을 발견하는 재미도 쏠쏠하고, 사진 찍기 좋은 포토존도 많아 추억을 남기기에도 좋습니다. 분주한 일상에서 벗어나 느긋하게 산책하며 힐링하기에 더없이 좋은 곳입니다.\n\n### 🧭 함께 가볼 곳: [창원가로수길 카페거리](http://place.map.kakao.com/1143702160)\n\n덕정카페거리와 비슷한 분위기를 즐기고 싶으시다면 창원가로수길 카페거리도 들러보세요. 이름처럼 가로수가 우거진 거리를 따라 세련된 카페들이 늘어서 있어, 또 다른 감성을 느끼실 수 있습니다. 두 곳을 함께 방문하시면 각기 다른 매력을 비교해보는 재미도 있을 거예요.\n\n### 🍽️ 주변 맛집: [고향마당뒷고기](http://place.map.kakao.com/349628342)\n\n경남 김해시 덕정로 196\n\n### 📋 참고 자료\n\n| 항목 | 내용 |\n|------|------|\n| 왕복 교통비 | 약 89,748원 |\n| 편도 소요시간 | 4시간 23분 |\n\n<div class=\"answer-footnote\">※ 위 교통비는 고속도로 통행료와 유류비를 포함한 추정치 입니다.<br>※ 명소 추천 근거는 평점이 아니라 최근 블로그 언급 빈도입니다.</div>"
+      }
+    ]
+  }
+}

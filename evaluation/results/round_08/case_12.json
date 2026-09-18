@@ -1,0 +1,70 @@
+{
+  "case": {
+    "id": "12",
+    "category": "미등록_지역",
+    "employee": "이서준",
+    "region": "무릉도원시",
+    "question": "이서준님 무릉도원시 여행 추천해줘"
+  },
+  "result": {
+    "answer": "입력하신 지역명을 찾을 수 없습니다. 지역명을 다시 확인해 주시겠어요?",
+    "contexts": [
+      {
+        "tool": "search_employee",
+        "result": {
+          "id": "SDS30651",
+          "name": "이서준",
+          "team": "클라우드운영팀",
+          "email": "seojun.lee@samsungsds.example.com",
+          "phone": "010-4915-2283",
+          "family": [],
+          "name_has_duplicates": false
+        }
+      },
+      {
+        "tool": "recommend_place",
+        "result": {
+          "invalid_region": true,
+          "reason": "not_found",
+          "message": "입력하신 지역명을 찾을 수 없습니다. 지역명을 다시 확인해 주시겠어요?"
+        }
+      }
+    ],
+    "trace": [
+      {
+        "seq": 1,
+        "type": "tool_call",
+        "name": "search_employee",
+        "args": {
+          "name_or_id": "이서준"
+        }
+      },
+      {
+        "seq": 2,
+        "type": "tool_result",
+        "name": "search_employee",
+        "content": "{\"id\": \"SDS30651\", \"name\": \"이서준\", \"team\": \"클라우드운영팀\", \"email\": \"seojun.lee@samsungsds.example.com\", \"phone\": \"010-4915-2283\", \"family\": [], \"name_has_duplicates\": false}"
+      },
+      {
+        "seq": 3,
+        "type": "tool_call",
+        "name": "recommend_place",
+        "args": {
+          "region": "무릉도원시",
+          "family": []
+        }
+      },
+      {
+        "seq": 4,
+        "type": "tool_result",
+        "name": "recommend_place",
+        "content": "{\"invalid_region\": true, \"reason\": \"not_found\", \"message\": \"입력하신 지역명을 찾을 수 없습니다. 지역명을 다시 확인해 주시겠어요?\"}"
+      },
+      {
+        "seq": 5,
+        "type": "answer",
+        "content": "입력하신 지역명을 찾을 수 없습니다. 지역명을 다시 확인해 주시겠어요?"
+      }
+    ]
+  }
+}

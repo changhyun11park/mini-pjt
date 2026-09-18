@@ -1,0 +1,154 @@
+{
+  "case": {
+    "id": "8",
+    "category": "정상_광역_1인가구",
+    "employee": "임재현",
+    "region": "전라북도",
+    "question": "임재현님 전라북도 여행 추천해줘"
+  },
+  "result": {
+    "answer": "임재현님, 한 주간 고생 많으셨습니다! 😊 이번 주말에는 서해의 아름다운 섬으로 떠나보시는 건 어떨까요?\n\n### 🏞️ 이번 주 추천: [선유도](http://place.map.kakao.com/14864632)\n\n전북 군산 앞바다에 자리한 선유도는 '신선이 노닐던 섬'이라는 이름처럼 빼어난 풍광을 자랑하는 곳입니다. 에메랄드빛 바다와 기암괴석이 어우러진 해안선을 따라 걷다 보면 일상의 피로가 말끔히 씻겨 내려가는 듯한 기분을 느끼실 수 있습니다. 특히 망주봉에서 바라보는 서해 낙조는 가슴 속 깊이 남을 만큼 아름답고, 해수욕장에서는 맑은 물에서 물놀이를 즐기며 여유로운 시간을 보내실 수 있습니다. 섬 특유의 한적한 분위기 속에서 산책하고 싶으신 분들께 더없이 좋은 선택이 될 것입니다.\n\n### 🍽️ 주변 맛집: [서해회식당](http://place.map.kakao.com/12603882)\n\n전북특별자치도 군산시 옥도면 선유북길 93\n\n### 📋 참고 자료\n\n| 항목 | 내용 |\n|------|------|\n| 왕복 교통비 | 약 105,483원 |\n| 편도 소요시간 | 3시간 38분 |\n\n<div class=\"answer-footnote\">※ 위 교통비는 고속도로 통행료와 유류비를 포함한 추정치 입니다.<br>※ 명소 추천 근거는 평점이 아니라 최근 블로그 언급 빈도입니다.</div>",
+    "contexts": [
+      {
+        "tool": "search_employee",
+        "result": {
+          "id": "SDS83417",
+          "name": "임재현",
+          "team": "물류플랫폼팀",
+          "email": "jaehyun.im@samsungsds.example.com",
+          "phone": "010-9471-2038",
+          "family": []
+        }
+      },
+      {
+        "tool": "recommend_place",
+        "result": {
+          "keyword_used": "혼자 가기 좋은",
+          "note": "평점이 아니라 최근 블로그 언급이 많은 곳 기준입니다.",
+          "추천_명소": {
+            "name": "선유도",
+            "address": "전북특별자치도 군산시 옥도면 선유도리",
+            "mention_count": 13436,
+            "url": "http://place.map.kakao.com/14864632",
+            "lat": 35.8106890647466,
+            "lng": 126.410505924295
+          },
+          "그_외_가볼만한_곳": []
+        }
+      },
+      {
+        "tool": "price_time",
+        "result": {
+          "toll": 13500,
+          "distance_km": 261.61,
+          "duration_min": 218,
+          "duration_display": "3시간 38분",
+          "destination": "선유도",
+          "origin_station": "서울영업소",
+          "destination_station": "전주영업소",
+          "note": "통행료·거리는 고속도로 영업소 구간만 포함한 값이고, 편도 소요시간은 삼성SDS 본사에서 추천 명소까지 실제 도로 기준(카카오모빌리티 길찾기) 값입니다."
+        }
+      },
+      {
+        "tool": "nearby_restaurant",
+        "result": {
+          "note": "평점이 아니라 최근 블로그 언급이 많은 곳 기준입니다.",
+          "추천_맛집": {
+            "name": "서해회식당",
+            "address": "전북특별자치도 군산시 옥도면 선유북길 93",
+            "mention_count": 277550,
+            "url": "http://place.map.kakao.com/12603882"
+          }
+        }
+      },
+      {
+        "tool": "traffic_calculator",
+        "result": {
+          "round_trip_cost": 105483
+        }
+      }
+    ],
+    "trace": [
+      {
+        "seq": 1,
+        "type": "tool_call",
+        "name": "search_employee",
+        "args": {
+          "name_or_id": "임재현"
+        }
+      },
+      {
+        "seq": 2,
+        "type": "tool_result",
+        "name": "search_employee",
+        "content": "{\"id\": \"SDS83417\", \"name\": \"임재현\", \"team\": \"물류플랫폼팀\", \"email\": \"jaehyun.im@samsungsds.example.com\", \"phone\": \"010-9471-2038\", \"family\": []}"
+      },
+      {
+        "seq": 3,
+        "type": "tool_call",
+        "name": "recommend_place",
+        "args": {
+          "region": "전라북도",
+          "family": []
+        }
+      },
+      {
+        "seq": 4,
+        "type": "tool_result",
+        "name": "recommend_place",
+        "content": "{\"keyword_used\": \"혼자 가기 좋은\", \"note\": \"평점이 아니라 최근 블로그 언급이 많은 곳 기준입니다.\", \"추천_명소\": {\"name\": \"선유도\", \"address\": \"전북특별자치도 군산시 옥도면 선유도리\", \"mention_count\": 13436, \"url\": \"http://place.map.kakao.com/14864632\", \"lat\": 35.8106890647466, \"lng\": 126.410505924295}, \"그_외_가볼만한_곳\": []}"
+      },
+      {
+        "seq": 5,
+        "type": "tool_call",
+        "name": "price_time",
+        "args": {
+          "dest_lat": 35.8106890647466,
+          "dest_lng": 126.410505924295,
+          "dest_name": "선유도"
+        }
+      },
+      {
+        "seq": 5,
+        "type": "tool_call",
+        "name": "nearby_restaurant",
+        "args": {
+          "lat": 35.8106890647466,
+          "lng": 126.410505924295
+        }
+      },
+      {
+        "seq": 6,
+        "type": "tool_result",
+        "name": "price_time",
+        "content": "{\"toll\": 13500, \"distance_km\": 261.61, \"duration_min\": 218, \"duration_display\": \"3시간 38분\", \"destination\": \"선유도\", \"origin_station\": \"서울영업소\", \"destination_station\": \"전주영업소\", \"note\": \"통행료·거리는 고속도로 영업소 구간만 포함한 값이고, 편도 소요시간은 삼성SDS 본사에서 추천 명소까지 실제 도로 기준(카카오모빌리티 길찾기) 값입니다.\"}"
+      },
+      {
+        "seq": 7,
+        "type": "tool_result",
+        "name": "nearby_restaurant",
+        "content": "{\"note\": \"평점이 아니라 최근 블로그 언급이 많은 곳 기준입니다.\", \"추천_맛집\": {\"name\": \"서해회식당\", \"address\": \"전북특별자치도 군산시 옥도면 선유북길 93\", \"mention_count\": 277550, \"url\": \"http://place.map.kakao.com/12603882\"}}"
+      },
+      {
+        "seq": 8,
+        "type": "tool_call",
+        "name": "traffic_calculator",
+        "args": {
+          "toll": 13500,
+          "distance_km": 261.61
+        }
+      },
+      {
+        "seq": 9,
+        "type": "tool_result",
+        "name": "traffic_calculator",
+        "content": "{\"round_trip_cost\": 105483}"
+      },
+      {
+        "seq": 10,
+        "type": "answer",
+        "content": "임재현님, 한 주간 고생 많으셨습니다! 😊 이번 주말에는 서해의 아름다운 섬으로 떠나보시는 건 어떨까요?\n\n### 🏞️ 이번 주 추천: [선유도](http://place.map.kakao.com/14864632)\n\n전북 군산 앞바다에 자리한 선유도는 '신선이 노닐던 섬'이라는 이름처럼 빼어난 풍광을 자랑하는 곳입니다. 에메랄드빛 바다와 기암괴석이 어우러진 해안선을 따라 걷다 보면 일상의 피로가 말끔히 씻겨 내려가는 듯한 기분을 느끼실 수 있습니다. 특히 망주봉에서 바라보는 서해 낙조는 가슴 속 깊이 남을 만큼 아름답고, 해수욕장에서는 맑은 물에서 물놀이를 즐기며 여유로운 시간을 보내실 수 있습니다. 섬 특유의 한적한 분위기 속에서 산책하고 싶으신 분들께 더없이 좋은 선택이 될 것입니다.\n\n### 🍽️ 주변 맛집: [서해회식당](http://place.map.kakao.com/12603882)\n\n전북특별자치도 군산시 옥도면 선유북길 93\n\n### 📋 참고 자료\n\n| 항목 | 내용 |\n|------|------|\n| 왕복 교통비 | 약 105,483원 |\n| 편도 소요시간 | 3시간 38분 |\n\n<div class=\"answer-footnote\">※ 위 교통비는 고속도로 통행료와 유류비를 포함한 추정치 입니다.<br>※ 명소 추천 근거는 평점이 아니라 최근 블로그 언급 빈도입니다.</div>"
+      }
+    ]
+  }
+}

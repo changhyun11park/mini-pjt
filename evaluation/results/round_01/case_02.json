@@ -1,0 +1,176 @@
+{
+  "case": {
+    "id": "2",
+    "category": "정상_목적지_커플",
+    "employee": "최민준",
+    "region": "부산 해운대구",
+    "question": "최민준님 부산 해운대구 여행 추천해줘"
+  },
+  "result": {
+    "answer": "최민준님, 한 주 동안 정말 수고 많으셨습니다! 😊 이번 주말에는 배우자님과 함께 부산으로 떠나 여유로운 시간을 보내시는 건 어떨까요?\n\n### 🏞️ 이번 주 추천: 온천천카페거리\n\n온천천카페거리는 맑은 하천을 따라 개성 넘치는 카페와 소품숍들이 늘어선 곳으로, 걷는 것만으로도 기분이 절로 좋아지는 거리입니다. 잔잔하게 흐르는 온천천 옆을 나란히 걸으며 분위기 좋은 카페에서 커피 한 잔 즐기다 보면, 일상의 피로가 스르르 녹아내리는 느낌을 받으실 거예요. 소소하게 구경하고 쉬어가기 좋아 배우자님과 함께 느긋하게 반나절을 보내기에 더없이 좋은 장소입니다.\n\n### 🧭 함께 가볼 곳: 망미단길\n\n망미단길은 부산의 힙한 감성이 물씬 풍기는 골목으로, 독특한 분위기의 카페와 빈티지 숍, 작은 갤러리들이 모여 있어 온천천카페거리와는 또 다른 매력을 느끼실 수 있습니다. 두 곳을 함께 둘러보면 부산의 트렌디한 일상 문화를 한껏 즐기실 수 있어 더욱 알찬 하루가 될 거예요.\n\n### 🍽️ 주변 맛집: 풍미랑\n\n부산 동래구 온천천로 451-1\n\n### 📋 참고 자료\n\n| 항목 | 내용 |\n|------|------|\n| 왕복 교통비 | 약 86,380원 |\n| 편도 소요시간 | 4시간 36분 |\n\n<div class=\"answer-footnote\">※ 위 교통비는 고속도로 통행료와 유류비를 포함한 추정치 입니다.<br>※ 명소 추천 근거는 평점이 아니라 최근 블로그 언급 빈도입니다.</div>\n\n### 🔗 참고 링크\n- 이번 주 추천: [온천천카페거리](http://place.map.kakao.com/24481224)\n- 함께 가볼 곳: [망미단길](http://place.map.kakao.com/73899434)\n- 주변 맛집: [풍미랑](http://place.map.kakao.com/1095490939)",
+    "contexts": [
+      {
+        "tool": "search_employee",
+        "result": {
+          "id": "SDS44208",
+          "name": "최민준",
+          "team": "물류플랫폼팀",
+          "email": "minjun.choi@samsungsds.example.com",
+          "phone": "010-5027-8134",
+          "family": [
+            {
+              "name": "한지민",
+              "relation": "배우자",
+              "age": 33
+            }
+          ]
+        }
+      },
+      {
+        "tool": "recommend_place",
+        "result": {
+          "keyword_used": "커플 여행",
+          "note": "평점이 아니라 최근 블로그 언급이 많은 곳 기준입니다.",
+          "추천_명소": {
+            "name": "온천천카페거리",
+            "address": "부산 동래구 온천천로 451",
+            "mention_count": 1049617,
+            "url": "http://place.map.kakao.com/24481224",
+            "lat": 35.19159588196586,
+            "lng": 129.10242898314618
+          },
+          "그_외_가볼만한_곳": [
+            {
+              "name": "망미단길",
+              "address": "부산 수영구 망미번영로60번길 8",
+              "mention_count": 369,
+              "url": "http://place.map.kakao.com/73899434",
+              "lat": 35.1723521820499,
+              "lng": 129.11007441992288,
+              "duration_min": 13
+            }
+          ]
+        }
+      },
+      {
+        "tool": "price_time",
+        "result": {
+          "toll": 11900,
+          "distance_km": 208.60000000000002,
+          "duration_min": 276,
+          "duration_display": "4시간 36분",
+          "destination": "온천천카페거리",
+          "origin_station": "서울영업소",
+          "destination_station": "부산영업소",
+          "note": "통행료·거리는 고속도로 영업소 구간만 포함한 값이고, 편도 소요시간은 삼성SDS 본사에서 추천 명소까지 실제 도로 기준(카카오모빌리티 길찾기) 값입니다."
+        }
+      },
+      {
+        "tool": "nearby_restaurant",
+        "result": {
+          "note": "평점이 아니라 최근 블로그 언급이 많은 곳 기준입니다.",
+          "추천_맛집": {
+            "name": "풍미랑",
+            "address": "부산 동래구 온천천로 451-1",
+            "mention_count": 438090,
+            "url": "http://place.map.kakao.com/1095490939"
+          }
+        }
+      },
+      {
+        "tool": "traffic_calculator",
+        "result": {
+          "round_trip_cost": 86380
+        }
+      }
+    ],
+    "trace": [
+      {
+        "seq": 1,
+        "type": "tool_call",
+        "name": "search_employee",
+        "args": {
+          "name_or_id": "최민준"
+        }
+      },
+      {
+        "seq": 2,
+        "type": "tool_result",
+        "name": "search_employee",
+        "content": "{\"id\": \"SDS44208\", \"name\": \"최민준\", \"team\": \"물류플랫폼팀\", \"email\": \"minjun.choi@samsungsds.example.com\", \"phone\": \"010-5027-8134\", \"family\": [{\"name\": \"한지민\", \"relation\": \"배우자\", \"age\": 33}]}"
+      },
+      {
+        "seq": 3,
+        "type": "tool_call",
+        "name": "recommend_place",
+        "args": {
+          "region": "부산 해운대구",
+          "family": [
+            {
+              "name": "한지민",
+              "relation": "배우자",
+              "age": 33
+            }
+          ]
+        }
+      },
+      {
+        "seq": 4,
+        "type": "tool_result",
+        "name": "recommend_place",
+        "content": "{\"keyword_used\": \"커플 여행\", \"note\": \"평점이 아니라 최근 블로그 언급이 많은 곳 기준입니다.\", \"추천_명소\": {\"name\": \"온천천카페거리\", \"address\": \"부산 동래구 온천천로 451\", \"mention_count\": 1049617, \"url\": \"http://place.map.kakao.com/24481224\", \"lat\": 35.19159588196586, \"lng\": 129.10242898314618}, \"그_외_가볼만한_곳\": [{\"name\": \"망미단길\", \"address\": \"부산 수영구 망미번영로60번길 8\", \"mention_count\": 369, \"url\": \"http://place.map.kakao.com/73899434\", \"lat\": 35.1723521820499, \"lng\": 129.11007441992288, \"duration_min\": 13}]}"
+      },
+      {
+        "seq": 5,
+        "type": "tool_call",
+        "name": "price_time",
+        "args": {
+          "dest_lat": 35.19159588196586,
+          "dest_lng": 129.10242898314618,
+          "dest_name": "온천천카페거리"
+        }
+      },
+      {
+        "seq": 5,
+        "type": "tool_call",
+        "name": "nearby_restaurant",
+        "args": {
+          "lat": 35.19159588196586,
+          "lng": 129.10242898314618
+        }
+      },
+      {
+        "seq": 6,
+        "type": "tool_result",
+        "name": "price_time",
+        "content": "{\"toll\": 11900, \"distance_km\": 208.60000000000002, \"duration_min\": 276, \"duration_display\": \"4시간 36분\", \"destination\": \"온천천카페거리\", \"origin_station\": \"서울영업소\", \"destination_station\": \"부산영업소\", \"note\": \"통행료·거리는 고속도로 영업소 구간만 포함한 값이고, 편도 소요시간은 삼성SDS 본사에서 추천 명소까지 실제 도로 기준(카카오모빌리티 길찾기) 값입니다.\"}"
+      },
+      {
+        "seq": 7,
+        "type": "tool_result",
+        "name": "nearby_restaurant",
+        "content": "{\"note\": \"평점이 아니라 최근 블로그 언급이 많은 곳 기준입니다.\", \"추천_맛집\": {\"name\": \"풍미랑\", \"address\": \"부산 동래구 온천천로 451-1\", \"mention_count\": 438090, \"url\": \"http://place.map.kakao.com/1095490939\"}}"
+      },
+      {
+        "seq": 8,
+        "type": "tool_call",
+        "name": "traffic_calculator",
+        "args": {
+          "toll": 11900,
+          "distance_km": 208.60000000000002
+        }
+      },
+      {
+        "seq": 9,
+        "type": "tool_result",
+        "name": "traffic_calculator",
+        "content": "{\"round_trip_cost\": 86380}"
+      },
+      {
+        "seq": 10,
+        "type": "answer",
+        "content": "최민준님, 한 주 동안 정말 수고 많으셨습니다! 😊 이번 주말에는 배우자님과 함께 부산으로 떠나 여유로운 시간을 보내시는 건 어떨까요?\n\n### 🏞️ 이번 주 추천: 온천천카페거리\n\n온천천카페거리는 맑은 하천을 따라 개성 넘치는 카페와 소품숍들이 늘어선 곳으로, 걷는 것만으로도 기분이 절로 좋아지는 거리입니다. 잔잔하게 흐르는 온천천 옆을 나란히 걸으며 분위기 좋은 카페에서 커피 한 잔 즐기다 보면, 일상의 피로가 스르르 녹아내리는 느낌을 받으실 거예요. 소소하게 구경하고 쉬어가기 좋아 배우자님과 함께 느긋하게 반나절을 보내기에 더없이 좋은 장소입니다.\n\n### 🧭 함께 가볼 곳: 망미단길\n\n망미단길은 부산의 힙한 감성이 물씬 풍기는 골목으로, 독특한 분위기의 카페와 빈티지 숍, 작은 갤러리들이 모여 있어 온천천카페거리와는 또 다른 매력을 느끼실 수 있습니다. 두 곳을 함께 둘러보면 부산의 트렌디한 일상 문화를 한껏 즐기실 수 있어 더욱 알찬 하루가 될 거예요.\n\n### 🍽️ 주변 맛집: 풍미랑\n\n부산 동래구 온천천로 451-1\n\n### 📋 참고 자료\n\n| 항목 | 내용 |\n|------|------|\n| 왕복 교통비 | 약 86,380원 |\n| 편도 소요시간 | 4시간 36분 |\n\n<div class=\"answer-footnote\">※ 위 교통비는 고속도로 통행료와 유류비를 포함한 추정치 입니다.<br>※ 명소 추천 근거는 평점이 아니라 최근 블로그 언급 빈도입니다.</div>\n\n### 🔗 참고 링크\n- 이번 주 추천: [온천천카페거리](http://place.map.kakao.com/24481224)\n- 함께 가볼 곳: [망미단길](http://place.map.kakao.com/73899434)\n- 주변 맛집: [풍미랑](http://place.map.kakao.com/1095490939)"
+      }
+    ]
+  }
+}

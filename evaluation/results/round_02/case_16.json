@@ -1,0 +1,69 @@
+{
+  "case": {
+    "id": "16",
+    "category": "해외지역",
+    "employee": "이서준",
+    "region": "미국 뉴욕",
+    "question": "이서준님 미국 뉴욕 여행 추천해줘"
+  },
+  "result": {
+    "answer": "거리가 멀어 주말 동안 다녀오시기 어려울 수 있어요. 국내 여행지로 선택해보시는 건 어떨까요?",
+    "contexts": [
+      {
+        "tool": "search_employee",
+        "result": {
+          "id": "SDS30651",
+          "name": "이서준",
+          "team": "클라우드운영팀",
+          "email": "seojun.lee@samsungsds.example.com",
+          "phone": "010-4915-2283",
+          "family": []
+        }
+      },
+      {
+        "tool": "recommend_place",
+        "result": {
+          "invalid_region": true,
+          "reason": "too_far",
+          "message": "거리가 멀어 주말 동안 다녀오시기 어려울 수 있어요. 국내 여행지로 선택해보시는 건 어떨까요?"
+        }
+      }
+    ],
+    "trace": [
+      {
+        "seq": 1,
+        "type": "tool_call",
+        "name": "search_employee",
+        "args": {
+          "name_or_id": "이서준"
+        }
+      },
+      {
+        "seq": 2,
+        "type": "tool_result",
+        "name": "search_employee",
+        "content": "{\"id\": \"SDS30651\", \"name\": \"이서준\", \"team\": \"클라우드운영팀\", \"email\": \"seojun.lee@samsungsds.example.com\", \"phone\": \"010-4915-2283\", \"family\": []}"
+      },
+      {
+        "seq": 3,
+        "type": "tool_call",
+        "name": "recommend_place",
+        "args": {
+          "region": "미국 뉴욕",
+          "family": []
+        }
+      },
+      {
+        "seq": 4,
+        "type": "tool_result",
+        "name": "recommend_place",
+        "content": "{\"invalid_region\": true, \"reason\": \"too_far\", \"message\": \"거리가 멀어 주말 동안 다녀오시기 어려울 수 있어요. 국내 여행지로 선택해보시는 건 어떨까요?\"}"
+      },
+      {
+        "seq": 5,
+        "type": "answer",
+        "content": "거리가 멀어 주말 동안 다녀오시기 어려울 수 있어요. 국내 여행지로 선택해보시는 건 어떨까요?"
+      }
+    ]
+  }
+}

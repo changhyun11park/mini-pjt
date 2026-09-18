@@ -1,0 +1,70 @@
+{
+  "case": {
+    "id": "15",
+    "category": "북한지역",
+    "employee": "박도윤",
+    "region": "평양",
+    "question": "박도윤님 평양 여행 추천해줘"
+  },
+  "result": {
+    "answer": "해당 지역은 여행이 불가합니다. 국내 다른 지역으로 다시 알려주시겠어요?",
+    "contexts": [
+      {
+        "tool": "search_employee",
+        "result": {
+          "id": "SDS23917",
+          "name": "박도윤",
+          "team": "물류플랫폼팀",
+          "email": "doyun.park@samsungsds.example.com",
+          "phone": "010-3392-6017",
+          "family": [],
+          "name_has_duplicates": false
+        }
+      },
+      {
+        "tool": "recommend_place",
+        "result": {
+          "invalid_region": true,
+          "reason": "north_korea",
+          "message": "해당 지역은 여행이 불가합니다. 국내 다른 지역으로 다시 알려주시겠어요?"
+        }
+      }
+    ],
+    "trace": [
+      {
+        "seq": 1,
+        "type": "tool_call",
+        "name": "search_employee",
+        "args": {
+          "name_or_id": "박도윤"
+        }
+      },
+      {
+        "seq": 2,
+        "type": "tool_result",
+        "name": "search_employee",
+        "content": "{\"id\": \"SDS23917\", \"name\": \"박도윤\", \"team\": \"물류플랫폼팀\", \"email\": \"doyun.park@samsungsds.example.com\", \"phone\": \"010-3392-6017\", \"family\": [], \"name_has_duplicates\": false}"
+      },
+      {
+        "seq": 3,
+        "type": "tool_call",
+        "name": "recommend_place",
+        "args": {
+          "region": "평양",
+          "family": []
+        }
+      },
+      {
+        "seq": 4,
+        "type": "tool_result",
+        "name": "recommend_place",
+        "content": "{\"invalid_region\": true, \"reason\": \"north_korea\", \"message\": \"해당 지역은 여행이 불가합니다. 국내 다른 지역으로 다시 알려주시겠어요?\"}"
+      },
+      {
+        "seq": 5,
+        "type": "answer",
+        "content": "해당 지역은 여행이 불가합니다. 국내 다른 지역으로 다시 알려주시겠어요?"
+      }
+    ]
+  }
+}

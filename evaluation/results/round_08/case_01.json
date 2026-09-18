@@ -1,0 +1,196 @@
+{
+  "case": {
+    "id": "1",
+    "category": "정상_목적지_아이동반",
+    "employee": "강지우",
+    "region": "제주시 성산읍",
+    "question": "강지우님 제주시 성산읍 여행 추천해줘"
+  },
+  "result": {
+    "answer": "강지우 님, 한 주 동안 정말 수고 많으셨습니다! 😊 이번 주말에는 배우자님, 따님과 함께 제주도로 떠나보시는 건 어떨까요?\n\n### 🏞️ 이번 주 추천: [광치기해변](http://place.map.kakao.com/13723499)\n\n성산일출봉 바로 옆에 자리한 광치기해변은 제주에서도 손꼽히는 아름다운 해변입니다. 썰물 때면 드넓은 용암 암반이 드러나 독특한 풍경을 만들어내는데, 아이와 함께 암반 위를 걸으며 조개와 작은 생물들을 관찰하는 것만으로도 특별한 추억이 됩니다. 에메랄드빛 바다와 성산일출봉이 한눈에 담기는 풍경은 가족 사진 명소로도 제격이라, 따님과 함께하는 소중한 순간을 사진으로 남기기에도 더없이 좋은 곳입니다.\n\n### 🧭 함께 가볼 곳\n\n**[일출랜드](http://place.map.kakao.com/10399499)**: 다양한 식물과 미로 정원이 가득한 테마파크로, 따님이 신나게 뛰어놀며 즐길 수 있어 온 가족이 함께 즐거운 시간을 보내기 좋습니다.\n\n**[올레길 3-A코스(온평-표선 올레)](http://place.map.kakao.com/12753453)**: 제주의 바다와 들판을 따라 걷는 코스로, 배우자님과 나란히 걸으며 제주의 자연을 온몸으로 느낄 수 있는 여유로운 산책 코스입니다.\n\n### 🍽️ 주변 맛집: [이층집 제주](http://place.map.kakao.com/96875541)\n\n제주특별자치도 서귀포시 성산읍 동류암로 39-4\n\n### 📋 참고 자료\n\n| 항목 | 내용 |\n|------|------|\n| 왕복 교통비 | 약 147,514원 |\n| 편도 소요시간 | 8시간 4분 |\n\n<div class=\"answer-footnote\">※ 위 교통비는 고속도로 통행료와 유류비를 포함한 추정치 입니다.<br>※ 명소 추천 근거는 평점이 아니라 가족 구성 적합도와 최근 블로그 언급 빈도입니다.</div>",
+    "contexts": [
+      {
+        "tool": "search_employee",
+        "result": {
+          "id": "SDS61295",
+          "name": "강지우",
+          "team": "물류플랫폼팀",
+          "email": "jiwoo.kang@samsungsds.example.com",
+          "phone": "010-7256-9581",
+          "family": [
+            {
+              "name": "정민재",
+              "relation": "배우자",
+              "age": 34
+            },
+            {
+              "name": "강하은",
+              "relation": "딸",
+              "age": 6
+            }
+          ],
+          "name_has_duplicates": false
+        }
+      },
+      {
+        "tool": "recommend_place",
+        "result": {
+          "keyword_used": "아이와 가볼만한",
+          "note": "평점이 아니라 가족 구성 적합도와 최근 블로그 언급 빈도를 각각 50%씩 반영한 순위입니다.",
+          "추천_명소": {
+            "name": "광치기해변",
+            "address": "제주특별자치도 서귀포시 성산읍 고성리 224-1",
+            "mention_count": 11210,
+            "url": "http://place.map.kakao.com/13723499",
+            "lat": 33.452520855588524,
+            "lng": 126.92419325010229
+          },
+          "그_외_가볼만한_곳": [
+            {
+              "name": "일출랜드",
+              "address": "제주특별자치도 서귀포시 성산읍 중산간동로 4150-30",
+              "mention_count": 11019,
+              "url": "http://place.map.kakao.com/10399499",
+              "lat": 33.3834025606756,
+              "lng": 126.841581094995,
+              "duration_min": 19
+            },
+            {
+              "name": "올레길 3-A코스(온평-표선 올레)",
+              "address": "제주특별자치도 서귀포시 성산읍 삼달리 237-5",
+              "mention_count": 6872,
+              "url": "http://place.map.kakao.com/12753453",
+              "lat": 33.37140152796935,
+              "lng": 126.86075182230402,
+              "duration_min": 18
+            }
+          ]
+        }
+      },
+      {
+        "tool": "price_time",
+        "result": {
+          "toll": 18200,
+          "distance_km": 370.38,
+          "duration_min": 484,
+          "duration_display": "8시간 4분",
+          "destination": "광치기해변",
+          "origin_station": "서울영업소",
+          "destination_station": "해남영업소",
+          "note": "통행료·거리는 고속도로 영업소 구간만 포함한 값이고, 편도 소요시간은 삼성SDS 본사에서 추천 명소까지 실제 도로 기준(카카오모빌리티 길찾기) 값입니다."
+        }
+      },
+      {
+        "tool": "nearby_restaurant",
+        "result": {
+          "note": "평점이 아니라 최근 블로그 언급이 많은 곳 기준입니다.",
+          "추천_맛집": {
+            "name": "이층집 제주",
+            "address": "제주특별자치도 서귀포시 성산읍 동류암로 39-4",
+            "mention_count": 505968,
+            "url": "http://place.map.kakao.com/96875541"
+          }
+        }
+      },
+      {
+        "tool": "traffic_calculator",
+        "result": {
+          "round_trip_cost": 147514
+        }
+      }
+    ],
+    "trace": [
+      {
+        "seq": 1,
+        "type": "tool_call",
+        "name": "search_employee",
+        "args": {
+          "name_or_id": "강지우"
+        }
+      },
+      {
+        "seq": 2,
+        "type": "tool_result",
+        "name": "search_employee",
+        "content": "{\"id\": \"SDS61295\", \"name\": \"강지우\", \"team\": \"물류플랫폼팀\", \"email\": \"jiwoo.kang@samsungsds.example.com\", \"phone\": \"010-7256-9581\", \"family\": [{\"name\": \"정민재\", \"relation\": \"배우자\", \"age\": 34}, {\"name\": \"강하은\", \"relation\": \"딸\", \"age\": 6}], \"name_has_duplicates\": false}"
+      },
+      {
+        "seq": 3,
+        "type": "tool_call",
+        "name": "recommend_place",
+        "args": {
+          "region": "제주시 성산읍",
+          "family": [
+            {
+              "name": "정민재",
+              "relation": "배우자",
+              "age": 34
+            },
+            {
+              "name": "강하은",
+              "relation": "딸",
+              "age": 6
+            }
+          ]
+        }
+      },
+      {
+        "seq": 4,
+        "type": "tool_result",
+        "name": "recommend_place",
+        "content": "{\"keyword_used\": \"아이와 가볼만한\", \"note\": \"평점이 아니라 가족 구성 적합도와 최근 블로그 언급 빈도를 각각 50%씩 반영한 순위입니다.\", \"추천_명소\": {\"name\": \"광치기해변\", \"address\": \"제주특별자치도 서귀포시 성산읍 고성리 224-1\", \"mention_count\": 11210, \"url\": \"http://place.map.kakao.com/13723499\", \"lat\": 33.452520855588524, \"lng\": 126.92419325010229}, \"그_외_가볼만한_곳\": [{\"name\": \"일출랜드\", \"address\": \"제주특별자치도 서귀포시 성산읍 중산간동로 4150-30\", \"mention_count\": 11019, \"url\": \"http://place.map.kakao.com/10399499\", \"lat\": 33.3834025606756, \"lng\": 126.841581094995, \"duration_min\": 19}, {\"name\": \"올레길 3-A코스(온평-표선 올레)\", \"address\": \"제주특별자치도 서귀포시 성산읍 삼달리 237-5\", \"mention_count\": 6872, \"url\": \"http://place.map.kakao.com/12753453\", \"lat\": 33.37140152796935, \"lng\": 126.86075182230402, \"duration_min\": 18}]}"
+      },
+      {
+        "seq": 5,
+        "type": "tool_call",
+        "name": "price_time",
+        "args": {
+          "dest_lat": 33.452520855588524,
+          "dest_lng": 126.92419325010229,
+          "dest_name": "광치기해변"
+        }
+      },
+      {
+        "seq": 5,
+        "type": "tool_call",
+        "name": "nearby_restaurant",
+        "args": {
+          "lat": 33.452520855588524,
+          "lng": 126.92419325010229
+        }
+      },
+      {
+        "seq": 6,
+        "type": "tool_result",
+        "name": "price_time",
+        "content": "{\"toll\": 18200, \"distance_km\": 370.38, \"duration_min\": 484, \"duration_display\": \"8시간 4분\", \"destination\": \"광치기해변\", \"origin_station\": \"서울영업소\", \"destination_station\": \"해남영업소\", \"note\": \"통행료·거리는 고속도로 영업소 구간만 포함한 값이고, 편도 소요시간은 삼성SDS 본사에서 추천 명소까지 실제 도로 기준(카카오모빌리티 길찾기) 값입니다.\"}"
+      },
+      {
+        "seq": 7,
+        "type": "tool_result",
+        "name": "nearby_restaurant",
+        "content": "{\"note\": \"평점이 아니라 최근 블로그 언급이 많은 곳 기준입니다.\", \"추천_맛집\": {\"name\": \"이층집 제주\", \"address\": \"제주특별자치도 서귀포시 성산읍 동류암로 39-4\", \"mention_count\": 505968, \"url\": \"http://place.map.kakao.com/96875541\"}}"
+      },
+      {
+        "seq": 8,
+        "type": "tool_call",
+        "name": "traffic_calculator",
+        "args": {
+          "toll": 18200,
+          "distance_km": 370.38
+        }
+      },
+      {
+        "seq": 9,
+        "type": "tool_result",
+        "name": "traffic_calculator",
+        "content": "{\"round_trip_cost\": 147514}"
+      },
+      {
+        "seq": 10,
+        "type": "answer",
+        "content": "강지우 님, 한 주 동안 정말 수고 많으셨습니다! 😊 이번 주말에는 배우자님, 따님과 함께 제주도로 떠나보시는 건 어떨까요?\n\n### 🏞️ 이번 주 추천: [광치기해변](http://place.map.kakao.com/13723499)\n\n성산일출봉 바로 옆에 자리한 광치기해변은 제주에서도 손꼽히는 아름다운 해변입니다. 썰물 때면 드넓은 용암 암반이 드러나 독특한 풍경을 만들어내는데, 아이와 함께 암반 위를 걸으며 조개와 작은 생물들을 관찰하는 것만으로도 특별한 추억이 됩니다. 에메랄드빛 바다와 성산일출봉이 한눈에 담기는 풍경은 가족 사진 명소로도 제격이라, 따님과 함께하는 소중한 순간을 사진으로 남기기에도 더없이 좋은 곳입니다.\n\n### 🧭 함께 가볼 곳\n\n**[일출랜드](http://place.map.kakao.com/10399499)**: 다양한 식물과 미로 정원이 가득한 테마파크로, 따님이 신나게 뛰어놀며 즐길 수 있어 온 가족이 함께 즐거운 시간을 보내기 좋습니다.\n\n**[올레길 3-A코스(온평-표선 올레)](http://place.map.kakao.com/12753453)**: 제주의 바다와 들판을 따라 걷는 코스로, 배우자님과 나란히 걸으며 제주의 자연을 온몸으로 느낄 수 있는 여유로운 산책 코스입니다.\n\n### 🍽️ 주변 맛집: [이층집 제주](http://place.map.kakao.com/96875541)\n\n제주특별자치도 서귀포시 성산읍 동류암로 39-4\n\n### 📋 참고 자료\n\n| 항목 | 내용 |\n|------|------|\n| 왕복 교통비 | 약 147,514원 |\n| 편도 소요시간 | 8시간 4분 |\n\n<div class=\"answer-footnote\">※ 위 교통비는 고속도로 통행료와 유류비를 포함한 추정치 입니다.<br>※ 명소 추천 근거는 평점이 아니라 가족 구성 적합도와 최근 블로그 언급 빈도입니다.</div>"
+      }
+    ]
+  }
+}

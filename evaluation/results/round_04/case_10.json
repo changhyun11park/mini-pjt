@@ -1,0 +1,176 @@
+{
+  "case": {
+    "id": "10",
+    "category": "정상_광역_아이동반",
+    "employee": "서지훈",
+    "region": "경기도",
+    "question": "서지훈님 경기도 여행 추천해줘"
+  },
+  "result": {
+    "answer": "서지훈님, 한 주간 고생 많으셨습니다! 😊 이번 주말에는 배우자님, 아드님과 함께 특별한 시간을 보내보시는 건 어떨까요?\n\n### 🏞️ 이번 주 추천: [디스커버스 의왕](http://place.map.kakao.com/1859116144)\n\n디스커버스 의왕은 가족 모두가 함께 즐길 수 있는 복합 문화 공간입니다. 넓은 야외 공간에서 아이들은 마음껏 뛰어놀 수 있고, 다양한 체험 프로그램과 전시를 통해 온 가족이 즐거운 추억을 만들 수 있습니다. 특히 자연 속에서 여유로운 시간을 보내며 일상의 피로를 풀기에 안성맞춤입니다. 계절마다 다른 매력을 선사하는 이곳에서 가족과 함께 소중한 주말을 보내보세요.\n\n### 🍽️ 주변 맛집: [초평돼지집](http://place.map.kakao.com/448340823)\n\n경기 의왕시 광진말로 54\n\n### 📋 참고 자료\n\n| 항목 | 내용 |\n|------|------|\n| 왕복 교통비 | 약 14,587원 |\n| 편도 소요시간 | 1시간 |\n\n<div class=\"answer-footnote\">※ 위 교통비는 고속도로 통행료와 유류비를 포함한 추정치 입니다.<br>※ 명소 추천 근거는 평점이 아니라 최근 블로그 언급 빈도입니다.</div>",
+    "contexts": [
+      {
+        "tool": "search_employee",
+        "result": {
+          "id": "SDS22684",
+          "name": "서지훈",
+          "team": "클라우드운영팀",
+          "email": "jihoon.seo@samsungsds.example.com",
+          "phone": "010-3364-8517",
+          "family": [
+            {
+              "name": "최유나",
+              "relation": "배우자",
+              "age": 36
+            },
+            {
+              "name": "서준",
+              "relation": "아들",
+              "age": 10
+            }
+          ]
+        }
+      },
+      {
+        "tool": "recommend_place",
+        "result": {
+          "keyword_used": "아이와 가볼만한",
+          "note": "평점이 아니라 최근 블로그 언급이 많은 곳 기준입니다.",
+          "추천_명소": {
+            "name": "디스커버스 의왕",
+            "address": "경기 의왕시 광진말로 54",
+            "mention_count": 2301,
+            "url": "http://place.map.kakao.com/1859116144",
+            "lat": 37.3209324512864,
+            "lng": 126.940659669106
+          },
+          "그_외_가볼만한_곳": []
+        }
+      },
+      {
+        "tool": "price_time",
+        "result": {
+          "toll": 2600,
+          "distance_km": 31.29,
+          "duration_min": 60,
+          "duration_display": "1시간",
+          "destination": "디스커버스 의왕",
+          "origin_station": "서울영업소",
+          "destination_station": "안산영업소",
+          "note": "통행료·거리는 고속도로 영업소 구간만 포함한 값이고, 편도 소요시간은 삼성SDS 본사에서 추천 명소까지 실제 도로 기준(카카오모빌리티 길찾기) 값입니다."
+        }
+      },
+      {
+        "tool": "nearby_restaurant",
+        "result": {
+          "note": "평점이 아니라 최근 블로그 언급이 많은 곳 기준입니다.",
+          "추천_맛집": {
+            "name": "초평돼지집",
+            "address": "경기 의왕시 광진말로 54",
+            "mention_count": 484857,
+            "url": "http://place.map.kakao.com/448340823"
+          }
+        }
+      },
+      {
+        "tool": "traffic_calculator",
+        "result": {
+          "round_trip_cost": 14587
+        }
+      }
+    ],
+    "trace": [
+      {
+        "seq": 1,
+        "type": "tool_call",
+        "name": "search_employee",
+        "args": {
+          "name_or_id": "서지훈"
+        }
+      },
+      {
+        "seq": 2,
+        "type": "tool_result",
+        "name": "search_employee",
+        "content": "{\"id\": \"SDS22684\", \"name\": \"서지훈\", \"team\": \"클라우드운영팀\", \"email\": \"jihoon.seo@samsungsds.example.com\", \"phone\": \"010-3364-8517\", \"family\": [{\"name\": \"최유나\", \"relation\": \"배우자\", \"age\": 36}, {\"name\": \"서준\", \"relation\": \"아들\", \"age\": 10}]}"
+      },
+      {
+        "seq": 3,
+        "type": "tool_call",
+        "name": "recommend_place",
+        "args": {
+          "region": "경기도",
+          "family": [
+            {
+              "name": "최유나",
+              "relation": "배우자",
+              "age": 36
+            },
+            {
+              "name": "서준",
+              "relation": "아들",
+              "age": 10
+            }
+          ]
+        }
+      },
+      {
+        "seq": 4,
+        "type": "tool_result",
+        "name": "recommend_place",
+        "content": "{\"keyword_used\": \"아이와 가볼만한\", \"note\": \"평점이 아니라 최근 블로그 언급이 많은 곳 기준입니다.\", \"추천_명소\": {\"name\": \"디스커버스 의왕\", \"address\": \"경기 의왕시 광진말로 54\", \"mention_count\": 2301, \"url\": \"http://place.map.kakao.com/1859116144\", \"lat\": 37.3209324512864, \"lng\": 126.940659669106}, \"그_외_가볼만한_곳\": []}"
+      },
+      {
+        "seq": 5,
+        "type": "tool_call",
+        "name": "price_time",
+        "args": {
+          "dest_lat": 37.3209324512864,
+          "dest_lng": 126.940659669106,
+          "dest_name": "디스커버스 의왕"
+        }
+      },
+      {
+        "seq": 5,
+        "type": "tool_call",
+        "name": "nearby_restaurant",
+        "args": {
+          "lat": 37.3209324512864,
+          "lng": 126.940659669106
+        }
+      },
+      {
+        "seq": 6,
+        "type": "tool_result",
+        "name": "price_time",
+        "content": "{\"toll\": 2600, \"distance_km\": 31.29, \"duration_min\": 60, \"duration_display\": \"1시간\", \"destination\": \"디스커버스 의왕\", \"origin_station\": \"서울영업소\", \"destination_station\": \"안산영업소\", \"note\": \"통행료·거리는 고속도로 영업소 구간만 포함한 값이고, 편도 소요시간은 삼성SDS 본사에서 추천 명소까지 실제 도로 기준(카카오모빌리티 길찾기) 값입니다.\"}"
+      },
+      {
+        "seq": 7,
+        "type": "tool_result",
+        "name": "nearby_restaurant",
+        "content": "{\"note\": \"평점이 아니라 최근 블로그 언급이 많은 곳 기준입니다.\", \"추천_맛집\": {\"name\": \"초평돼지집\", \"address\": \"경기 의왕시 광진말로 54\", \"mention_count\": 484857, \"url\": \"http://place.map.kakao.com/448340823\"}}"
+      },
+      {
+        "seq": 8,
+        "type": "tool_call",
+        "name": "traffic_calculator",
+        "args": {
+          "toll": 2600,
+          "distance_km": 31.29
+        }
+      },
+      {
+        "seq": 9,
+        "type": "tool_result",
+        "name": "traffic_calculator",
+        "content": "{\"round_trip_cost\": 14587}"
+      },
+      {
+        "seq": 10,
+        "type": "answer",
+        "content": "서지훈님, 한 주간 고생 많으셨습니다! 😊 이번 주말에는 배우자님, 아드님과 함께 특별한 시간을 보내보시는 건 어떨까요?\n\n### 🏞️ 이번 주 추천: [디스커버스 의왕](http://place.map.kakao.com/1859116144)\n\n디스커버스 의왕은 가족 모두가 함께 즐길 수 있는 복합 문화 공간입니다. 넓은 야외 공간에서 아이들은 마음껏 뛰어놀 수 있고, 다양한 체험 프로그램과 전시를 통해 온 가족이 즐거운 추억을 만들 수 있습니다. 특히 자연 속에서 여유로운 시간을 보내며 일상의 피로를 풀기에 안성맞춤입니다. 계절마다 다른 매력을 선사하는 이곳에서 가족과 함께 소중한 주말을 보내보세요.\n\n### 🍽️ 주변 맛집: [초평돼지집](http://place.map.kakao.com/448340823)\n\n경기 의왕시 광진말로 54\n\n### 📋 참고 자료\n\n| 항목 | 내용 |\n|------|------|\n| 왕복 교통비 | 약 14,587원 |\n| 편도 소요시간 | 1시간 |\n\n<div class=\"answer-footnote\">※ 위 교통비는 고속도로 통행료와 유류비를 포함한 추정치 입니다.<br>※ 명소 추천 근거는 평점이 아니라 최근 블로그 언급 빈도입니다.</div>"
+      }
+    ]
+  }
+}
