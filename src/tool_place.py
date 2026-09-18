@@ -40,6 +40,12 @@ _PRIMARY_FIT = 1.0
 _SECONDARY_FIT = 0.6
 _FALLBACK_FIT = 0.0
 _MAX_CANDIDATES = 10  # 키워드 2개(각 size=5) 검색 결과를 합친 뒤 적용하는 안전 상한
+# 추천 명소 1곳 + 함께 가볼 곳 최대 2곳을 채우기엔 후보가 최소 이 정도는 있어야
+# 한다. 키워드 문구를 붙인 검색은 "지역명+수식어" 문자열 매칭이라, 검색어 자체가
+# 카카오에서 잘 안 걸려 후보가 지나치게 적게(0건은 아니지만 1~2건만) 나오는 경우가
+# 있다(예: "과천 가족여행"은 1건뿐이지만 "과천"만 검색하면 5건 나옴). 이때는
+# 지역명 단독 검색 결과로 보충한다.
+_MIN_CANDIDATES = 3
 
 # 카카오 키워드 검색은 "혼자 가기 좋은"·"커플 여행" 같은 수식어를 넣어도 문자열
 # 매칭이라 그 지역에서 가장 언급이 많은 동물원·키즈카페 같은 곳이 검색어와 무관하게
@@ -94,7 +100,8 @@ def recommend_place(region: str, family: list[dict]) -> str:
     점수로 매긴다 — 언급 건수만 보면 지역에서 가장 유명한 곳으로 수렴해 가족 구성과
     무관하게 항상 같은 곳만 추천되던 문제를 보완한다. 자녀 없는 1인 가구·커플에는
     이름에 "키즈"·"동물원"·"체험"이 들어간 후보를 점수 계산 전에 제외한다 —
-    언급 건수가 워낙 높아 50:50 가중치만으론 안 걸러지는 경우가 있어서다.
+    언급 건수가 워낙 높아 50:50 가중치만으론 안 걸러지는 경우가 있어서다. 키워드
+    검색 결과가 너무 적으면(3건 미만) 지역명 단독 검색으로 후보를 보충한다.
 
     family는 Search_Employee가 반환한 family 리스트를 그대로 넘긴다.
     지역 없이는 호출하지 않는다 — 지역이 없으면 먼저 담당자에게 되물어야 한다.
@@ -125,14 +132,21 @@ def recommend_place(region: str, family: list[dict]) -> str:
             items.append(it)
             fit_by_key[key] = tier_fit
     items = items[:_MAX_CANDIDATES]
+
+    if len(items) < _MIN_CANDIDATES:
+        for it in _local_search(region):
+            key = (it["place_name"], it.get("address_name", ""))
+            if key in seen:
+                continue
+            seen.add(key)
+            items.append(it)
+            fit_by_key[key] = _FALLBACK_FIT
+        items = items[:_MAX_CANDIDATES]
+
     if family_type in _NO_CHILD_FAMILY_TYPES:
         kid_free = [it for it in items if not _is_child_oriented(it["place_name"])]
         if kid_free:
             items = kid_free
-    if not items:
-        items = _local_search(region)
-        for it in items:
-            fit_by_key[(it["place_name"], it.get("address_name", ""))] = _FALLBACK_FIT
     if not items:
         return json.dumps({"error": "일치하는 명소를 찾을 수 없습니다."}, ensure_ascii=False)
 

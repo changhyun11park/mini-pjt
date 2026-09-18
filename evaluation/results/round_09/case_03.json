@@ -1,0 +1,174 @@
+{
+  "case": {
+    "id": "3",
+    "category": "정상_목적지_1인가구",
+    "employee": "박도윤",
+    "region": "전주시 완산구",
+    "question": "박도윤님 전주시 완산구 여행 추천해줘"
+  },
+  "result": {
+    "answer": "박도윤님, 이번 주도 고생 많으셨습니다! 🌲\n\n### 🏞️ 이번 주 추천: [건지산](http://place.map.kakao.com/25174684)\n\n혼자 여유롭게 즐기기에 완벽한 건지산을 추천드립니다. 자연 속에서 마음껏 숨을 쉬며 힐링할 수 있는 곳으로, 주변의 아름다운 경치를 감상하며 자신의 페이스대로 산책을 즐길 수 있습니다. 바쁜 일상에서 벗어나 혼자만의 시간을 가지며 몸과 마음을 재충전하기에 더없이 좋은 장소입니다.\n\n### 🧭 함께 가볼 곳\n\n**[떼구르르솔방울숲](http://place.map.kakao.com/1628541430)**: 건지산 근처에서 자연의 고요함을 더욱 깊이 있게 경험할 수 있는 곳입니다. 숲 속의 평온한 분위기 속에서 혼자만의 명상 시간을 가져보세요.\n\n**[야호생태숲놀이터 꼬부랑소나무숲](http://place.map.kakao.com/358803933)**: 소나무 숲의 싱그러운 향기를 맡으며 자유로운 산책을 즐길 수 있는 공간으로, 자연과 하나 되는 경험을 선사합니다.\n\n### 🍽️ 주변 맛집: [더달달앤라면](http://place.map.kakao.com/1750174676)\n\n전북특별자치도 전주시 덕진구 소리로 54\n\n### 📋 참고 자료\n\n| 항목 | 정보 |\n|------|------|\n| 왕복 교통비 | 약 105,483원 |\n| 편도 소요시간 | 3시간 12분 |\n\n<div class=\"answer-footnote\">※ 위 교통비는 고속도로 통행료와 유류비를 포함한 추정치 입니다.<br>※ 명소 추천 근거는 평점이 아니라 가족 구성 적합도와 최근 블로그 언급 빈도입니다.</div>",
+    "contexts": [
+      {
+        "tool": "search_employee",
+        "result": {
+          "id": "SDS23917",
+          "name": "박도윤",
+          "team": "물류플랫폼팀",
+          "email": "doyun.park@samsungsds.example.com",
+          "phone": "010-3392-6017",
+          "family": [],
+          "name_has_duplicates": false
+        }
+      },
+      {
+        "tool": "recommend_place",
+        "result": {
+          "keyword_used": "혼자 가기 좋은",
+          "note": "평점이 아니라 가족 구성 적합도와 최근 블로그 언급 빈도를 각각 50%씩 반영한 순위입니다.",
+          "추천_명소": {
+            "name": "건지산",
+            "address": "전북특별자치도 전주시 덕진구 덕진동1가 640-8",
+            "mention_count": 279,
+            "url": "http://place.map.kakao.com/25174684",
+            "lat": 35.8508362310553,
+            "lng": 127.139660717335
+          },
+          "그_외_가볼만한_곳": [
+            {
+              "name": "떼구르르솔방울숲",
+              "address": "전북특별자치도 전주시 완산구 천잠로 303",
+              "mention_count": 36,
+              "url": "http://place.map.kakao.com/1628541430",
+              "lat": 35.8090751984919,
+              "lng": 127.086292924504,
+              "duration_min": 21
+            },
+            {
+              "name": "야호생태숲놀이터 꼬부랑소나무숲",
+              "address": "전북특별자치도 전주시 완산구 효자동1가 634",
+              "mention_count": 6,
+              "url": "http://place.map.kakao.com/358803933",
+              "lat": 35.8118884404016,
+              "lng": 127.120417339418,
+              "duration_min": 15
+            }
+          ]
+        }
+      },
+      {
+        "tool": "price_time",
+        "result": {
+          "toll": 13500,
+          "distance_km": 261.61,
+          "duration_min": 192,
+          "duration_display": "3시간 12분",
+          "destination": "건지산",
+          "origin_station": "서울영업소",
+          "destination_station": "전주영업소",
+          "note": "통행료·거리는 고속도로 영업소 구간만 포함한 값이고, 편도 소요시간은 삼성SDS 본사에서 추천 명소까지 실제 도로 기준(카카오모빌리티 길찾기) 값입니다."
+        }
+      },
+      {
+        "tool": "nearby_restaurant",
+        "result": {
+          "note": "평점이 아니라 최근 블로그 언급이 많은 곳 기준입니다.",
+          "추천_맛집": {
+            "name": "더달달앤라면",
+            "address": "전북특별자치도 전주시 덕진구 소리로 54",
+            "mention_count": 116120,
+            "url": "http://place.map.kakao.com/1750174676"
+          }
+        }
+      },
+      {
+        "tool": "traffic_calculator",
+        "result": {
+          "round_trip_cost": 105483
+        }
+      }
+    ],
+    "trace": [
+      {
+        "seq": 1,
+        "type": "tool_call",
+        "name": "search_employee",
+        "args": {
+          "name_or_id": "박도윤"
+        }
+      },
+      {
+        "seq": 2,
+        "type": "tool_result",
+        "name": "search_employee",
+        "content": "{\"id\": \"SDS23917\", \"name\": \"박도윤\", \"team\": \"물류플랫폼팀\", \"email\": \"doyun.park@samsungsds.example.com\", \"phone\": \"010-3392-6017\", \"family\": [], \"name_has_duplicates\": false}"
+      },
+      {
+        "seq": 3,
+        "type": "tool_call",
+        "name": "recommend_place",
+        "args": {
+          "region": "전주시 완산구",
+          "family": []
+        }
+      },
+      {
+        "seq": 4,
+        "type": "tool_result",
+        "name": "recommend_place",
+        "content": "{\"keyword_used\": \"혼자 가기 좋은\", \"note\": \"평점이 아니라 가족 구성 적합도와 최근 블로그 언급 빈도를 각각 50%씩 반영한 순위입니다.\", \"추천_명소\": {\"name\": \"건지산\", \"address\": \"전북특별자치도 전주시 덕진구 덕진동1가 640-8\", \"mention_count\": 279, \"url\": \"http://place.map.kakao.com/25174684\", \"lat\": 35.8508362310553, \"lng\": 127.139660717335}, \"그_외_가볼만한_곳\": [{\"name\": \"떼구르르솔방울숲\", \"address\": \"전북특별자치도 전주시 완산구 천잠로 303\", \"mention_count\": 36, \"url\": \"http://place.map.kakao.com/1628541430\", \"lat\": 35.8090751984919, \"lng\": 127.086292924504, \"duration_min\": 21}, {\"name\": \"야호생태숲놀이터 꼬부랑소나무숲\", \"address\": \"전북특별자치도 전주시 완산구 효자동1가 634\", \"mention_count\": 6, \"url\": \"http://place.map.kakao.com/358803933\", \"lat\": 35.8118884404016, \"lng\": 127.120417339418, \"duration_min\": 15}]}"
+      },
+      {
+        "seq": 5,
+        "type": "tool_call",
+        "name": "price_time",
+        "args": {
+          "dest_lat": 35.8508362310553,
+          "dest_lng": 127.139660717335,
+          "dest_name": "건지산"
+        }
+      },
+      {
+        "seq": 5,
+        "type": "tool_call",
+        "name": "nearby_restaurant",
+        "args": {
+          "lat": 35.8508362310553,
+          "lng": 127.139660717335
+        }
+      },
+      {
+        "seq": 6,
+        "type": "tool_result",
+        "name": "price_time",
+        "content": "{\"toll\": 13500, \"distance_km\": 261.61, \"duration_min\": 192, \"duration_display\": \"3시간 12분\", \"destination\": \"건지산\", \"origin_station\": \"서울영업소\", \"destination_station\": \"전주영업소\", \"note\": \"통행료·거리는 고속도로 영업소 구간만 포함한 값이고, 편도 소요시간은 삼성SDS 본사에서 추천 명소까지 실제 도로 기준(카카오모빌리티 길찾기) 값입니다.\"}"
+      },
+      {
+        "seq": 7,
+        "type": "tool_result",
+        "name": "nearby_restaurant",
+        "content": "{\"note\": \"평점이 아니라 최근 블로그 언급이 많은 곳 기준입니다.\", \"추천_맛집\": {\"name\": \"더달달앤라면\", \"address\": \"전북특별자치도 전주시 덕진구 소리로 54\", \"mention_count\": 116120, \"url\": \"http://place.map.kakao.com/1750174676\"}}"
+      },
+      {
+        "seq": 8,
+        "type": "tool_call",
+        "name": "traffic_calculator",
+        "args": {
+          "toll": 13500,
+          "distance_km": 261.61
+        }
+      },
+      {
+        "seq": 9,
+        "type": "tool_result",
+        "name": "traffic_calculator",
+        "content": "{\"round_trip_cost\": 105483}"
+      },
+      {
+        "seq": 10,
+        "type": "answer",
+        "content": "박도윤님, 이번 주도 고생 많으셨습니다! 🌲\n\n### 🏞️ 이번 주 추천: [건지산](http://place.map.kakao.com/25174684)\n\n혼자 여유롭게 즐기기에 완벽한 건지산을 추천드립니다. 자연 속에서 마음껏 숨을 쉬며 힐링할 수 있는 곳으로, 주변의 아름다운 경치를 감상하며 자신의 페이스대로 산책을 즐길 수 있습니다. 바쁜 일상에서 벗어나 혼자만의 시간을 가지며 몸과 마음을 재충전하기에 더없이 좋은 장소입니다.\n\n### 🧭 함께 가볼 곳\n\n**[떼구르르솔방울숲](http://place.map.kakao.com/1628541430)**: 건지산 근처에서 자연의 고요함을 더욱 깊이 있게 경험할 수 있는 곳입니다. 숲 속의 평온한 분위기 속에서 혼자만의 명상 시간을 가져보세요.\n\n**[야호생태숲놀이터 꼬부랑소나무숲](http://place.map.kakao.com/358803933)**: 소나무 숲의 싱그러운 향기를 맡으며 자유로운 산책을 즐길 수 있는 공간으로, 자연과 하나 되는 경험을 선사합니다.\n\n### 🍽️ 주변 맛집: [더달달앤라면](http://place.map.kakao.com/1750174676)\n\n전북특별자치도 전주시 덕진구 소리로 54\n\n### 📋 참고 자료\n\n| 항목 | 정보 |\n|------|------|\n| 왕복 교통비 | 약 105,483원 |\n| 편도 소요시간 | 3시간 12분 |\n\n<div class=\"answer-footnote\">※ 위 교통비는 고속도로 통행료와 유류비를 포함한 추정치 입니다.<br>※ 명소 추천 근거는 평점이 아니라 가족 구성 적합도와 최근 블로그 언급 빈도입니다.</div>"
+      }
+    ]
+  }
+}
